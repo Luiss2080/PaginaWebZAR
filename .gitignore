@@ -1,0 +1,300 @@
+# 🛒 MultiShop - Plataforma E-commerce MVC
+# Archivo .gitignore para proyecto PHP con arquitectura MVC
+
+# ================================
+# 🔧 ARCHIVOS DE CONFIGURACIÓN
+# ================================
+
+# Configuración de base de datos (credenciales sensibles)
+config/database.php
+config/app.php
+.env
+.env.local
+.env.production
+
+# Archivos de configuración del servidor
+.htaccess.local
+php.ini
+
+# ================================
+# 📁 DIRECTORIOS DEL SISTEMA
+# ================================
+
+# Archivos de sistema Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Archivos de sistema Linux
+*~
+.directory
+
+# ================================
+# 💻 ENTORNOS DE DESARROLLO
+# ================================
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PhpStorm / IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# NetBeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+
+# Eclipse
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# ================================
+# 🗃️ BASES DE DATOS Y LOGS
+# ================================
+
+# Archivos de base de datos SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# Dumps de base de datos
+*.sql
+!database/schema.sql
+!database/migrations/*.sql
+
+# Logs del servidor
+logs/
+*.log
+error.log
+access.log
+php_errors.log
+
+# ================================
+# 📦 DEPENDENCIAS Y PAQUETES
+# ================================
+
+# Composer (si se usa en el futuro)
+vendor/
+composer.lock
+composer.phar
+
+# Node.js (si se agrega en el futuro)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bower
+bower_components/
+
+# ================================
+# 🗂️ ARCHIVOS TEMPORALES
+# ================================
+
+# Archivos temporales de PHP
+*.tmp
+*.temp
+/tmp/
+temp/
+
+# Cache del sistema
+cache/
+*.cache
+
+# Sesiones PHP
+/sessions/
+session_*
+
+# Archivos de respaldo
+*.bak
+*.backup
+*.old
+*~
+
+# ================================
+# 📤 ARCHIVOS DE SUBIDA
+# ================================
+
+# Directorio de uploads (imágenes subidas por usuarios)
+public/uploads/
+uploads/
+!public/uploads/.gitkeep
+
+# Archivos de imágenes temporales
+public/img/temp/
+public/img/cache/
+
+# ================================
+# 🔒 ARCHIVOS SENSIBLES
+# ================================
+
+# Archivos con credenciales
+credentials.json
+secrets.json
+private.key
+*.pem
+*.p12
+
+# Archivos de configuración de hosting
+cpanel.yml
+.cpanel.yml
+
+# Variables de entorno específicas
+.env.development
+.env.staging
+.env.testing
+
+# ================================
+# 🛠️ HERRAMIENTAS DE DESARROLLO
+# ================================
+
+# PHPUnit
+phpunit.xml
+.phpunit.result.cache
+/coverage/
+
+# PHP CodeSniffer
+.phpcs.cache
+
+# Psalm
+.psalm/
+
+# PHP-CS-Fixer
+.php_cs.cache
+.php-cs-fixer.cache
+
+# ================================
+# 📊 REPORTES Y ANÁLISIS
+# ================================
+
+# Reportes de análisis de código
+/reports/
+coverage.xml
+phpunit.xml
+
+# Xdebug
+xdebug.profiler.*
+
+# ================================
+# 🌐 ARCHIVOS ESPECÍFICOS DEL SERVIDOR
+# ================================
+
+# Apache
+.htaccess.backup
+.htpasswd
+
+# Nginx
+nginx.conf.local
+
+# XAMPP específicos
+xampp-control.ini
+xampp-control.log
+
+# ================================
+# 📱 MÓVIL Y PWA (futuro)
+# ================================
+
+# Cordova / PhoneGap
+platforms/
+plugins/
+www/
+
+# ================================
+# 🎨 RECURSOS DE DISEÑO
+# ================================
+
+# Archivos fuente de Photoshop/Illustrator
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# Archivos temporales de imágenes
+*.tmp.jpg
+*.tmp.png
+*.tmp.gif
+
+# ================================
+# 🚀 PRODUCCIÓN Y DEPLOYMENT
+# ================================
+
+# Archivos de deployment
+deploy.php
+deploy.yaml
+.deploy/
+
+# Certificados SSL
+*.crt
+*.key
+*.csr
+
+# Scripts de producción
+production.sh
+staging.sh
+
+# ================================
+# 💾 RESPALDOS AUTOMÁTICOS
+# ================================
+
+# Respaldos de base de datos
+backup_*.sql
+db_backup_*
+*.dump
+
+# Respaldos de archivos
+backup_*.zip
+backup_*.tar.gz
+
+# ================================
+# 🔍 ARCHIVOS DE TESTING
+# ================================
+
+# Archivos de test temporales
+test_*.php
+*_test.php
+/tests/temp/
+
+# Coverage reports
+coverage/
+*.coverage
+
+# ================================
+# 📝 DOCUMENTACIÓN TEMPORAL
+# ================================
+
+# Documentación generada
+docs/api/
+/phpdoc/
+/api-docs/
+
+# Archivos markdown temporales
+*.tmp.md
+draft_*.md
