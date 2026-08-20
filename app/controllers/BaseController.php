@@ -18,7 +18,7 @@ class BaseController {
         $content = ob_get_clean();
         
         // Incluir el layout principal
-        include APP_PATH . 'views/layouts/main.php';
+        include APP_PATH . 'views/plantillas/principal.php';
     }
     
     /**
