@@ -1,28 +1,25 @@
 import Topbar from '../components/layout/Topbar';
 import Navbar from '../components/layout/Navbar';
 import HeroBanner from '../components/home/HeroBanner';
+import PopularCategories from '../components/home/PopularCategories';
+import FeaturedDrops from '../components/home/FeaturedDrops';
 import Footer from '../components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      {/* Cabecera (Fase 1) */}
+    <div className="flex flex-col min-h-screen bg-[#050505]">
+      {/* Cabecera */}
       <Topbar />
       <Navbar />
       
       <main className="flex-grow">
-        {/* Banner Principal (Fase 1) */}
+        {/* Banner Principal */}
         <HeroBanner />
         
-        {/* Placeholder para futuras fases */}
-        <div className="container mx-auto px-4 py-20 text-center border-t border-gray-100 mt-8">
-          <h2 className="text-3xl font-display text-gray-300">
-            [AQUÍ IRÁ LA SECCIÓN DE CATEGORÍAS - FASE 2]
-          </h2>
-          <p className="text-gray-400 mt-2">
-            Estamos construyendo esta interfaz progresivamente.
-          </p>
-        </div>
+        {/* Cuerpo Principal del E-commerce (Fase 2) */}
+        <PopularCategories />
+        <FeaturedDrops />
+        
       </main>
 
       {/* Pie de Página (Fase 1.5) */}
