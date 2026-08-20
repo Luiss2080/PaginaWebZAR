@@ -8,7 +8,7 @@ require_once APP_PATH . 'models/Product.php';
 require_once APP_PATH . 'models/Category.php';
 require_once APP_PATH . 'core/Database.php';
 
-class ProductController extends BaseController {
+class ProductosControlador extends BaseController {
     
     private $productModel;
     private $categoryModel;
@@ -55,7 +55,7 @@ class ProductController extends BaseController {
             ]
         ];
         
-        $this->render('products/index', $data);
+        $this->render('productos/index', $data);
     }
     
     /**
@@ -78,7 +78,7 @@ class ProductController extends BaseController {
             'related_products' => $relatedProducts
         ];
         
-        $this->render('products/show', $data);
+        $this->render('productos/show', $data);
     }
     
     /**
@@ -105,7 +105,7 @@ class ProductController extends BaseController {
             'categories' => $this->categoryModel->getWithProductCount()
         ];
         
-        $this->render('products/search', $data);
+        $this->render('productos/search', $data);
     }
     
     /**
@@ -132,7 +132,7 @@ class ProductController extends BaseController {
             'categories' => $this->categoryModel->getWithProductCount()
         ];
         
-        $this->render('products/category', $data);
+        $this->render('productos/category', $data);
     }
     
     /**

@@ -6,7 +6,7 @@
 require_once 'BaseController.php';
 require_once APP_PATH . 'models/Product.php';
 
-class UserController extends BaseController {
+class UsuarioControlador extends BaseController {
     
     private $productModel;
     
@@ -37,7 +37,7 @@ class UserController extends BaseController {
             'products' => $products
         ];
         
-        $this->render('user/wishlist', $data);
+        $this->render('usuario/wishlist', $data);
     }
     
     /**
@@ -88,6 +88,6 @@ class UserController extends BaseController {
             'current_page' => 'profile'
         ];
         
-        $this->render('user/profile', $data);
+        $this->render('usuario/profile', $data);
     }
 }

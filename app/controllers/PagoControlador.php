@@ -8,7 +8,7 @@ require_once APP_PATH . 'models/Cart.php';
 require_once APP_PATH . 'models/Product.php';
 require_once APP_PATH . 'core/Database.php';
 
-class CheckoutController extends BaseController {
+class PagoControlador extends BaseController {
     
     private $cartModel;
     private $productModel;
@@ -51,7 +51,7 @@ class CheckoutController extends BaseController {
             'total' => $total
         ];
         
-        $this->render('checkout/index', $data);
+        $this->render('pago/index', $data);
     }
     
     /**
@@ -137,7 +137,7 @@ class CheckoutController extends BaseController {
             'order_id' => $orderId
         ];
         
-        $this->render('checkout/success', $data);
+        $this->render('pago/success', $data);
     }
     
     /**
