@@ -1,6 +1,7 @@
 import Topbar from '../components/layout/Topbar';
 import Navbar from '../components/layout/Navbar';
 import HeroBanner from '../components/home/HeroBanner';
+import Footer from '../components/layout/Footer';
 
 export default function Home() {
   return (
@@ -23,6 +24,9 @@ export default function Home() {
           </p>
         </div>
       </main>
+
+      {/* Pie de Página (Fase 1.5) */}
+      <Footer />
     </div>
   )
 }
