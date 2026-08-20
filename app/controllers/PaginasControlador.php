@@ -5,7 +5,7 @@
 
 require_once 'BaseController.php';
 
-class PagesController extends BaseController {
+class PaginasControlador extends BaseController {
     
     /**
      * Página de contacto
@@ -16,7 +16,7 @@ class PagesController extends BaseController {
             'current_page' => 'contact'
         ];
         
-        $this->render('pages/contact', $data);
+        $this->render('paginas/contact', $data);
     }
     
     /**
@@ -91,7 +91,7 @@ class PagesController extends BaseController {
             'current_page' => 'about'
         ];
         
-        $this->render('pages/about', $data);
+        $this->render('paginas/about', $data);
     }
     
     /**
@@ -103,7 +103,7 @@ class PagesController extends BaseController {
             'current_page' => 'terms'
         ];
         
-        $this->render('pages/terms', $data);
+        $this->render('paginas/terms', $data);
     }
     
     /**
@@ -115,7 +115,7 @@ class PagesController extends BaseController {
             'current_page' => 'privacy'
         ];
         
-        $this->render('pages/privacy', $data);
+        $this->render('paginas/privacy', $data);
     }
     
     /**

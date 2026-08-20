@@ -8,7 +8,7 @@ require_once APP_PATH . 'models/Cart.php';
 require_once APP_PATH . 'models/Product.php';
 require_once APP_PATH . 'core/Database.php';
 
-class CartController extends BaseController {
+class CarritoControlador extends BaseController {
     
     private $cartModel;
     private $productModel;
@@ -32,7 +32,7 @@ class CartController extends BaseController {
             'cart_summary' => $cartSummary
         ];
         
-        $this->render('cart/index', $data);
+        $this->render('carrito/index', $data);
     }
     
     /**
