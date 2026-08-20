@@ -5,11 +5,28 @@ export default function HeroBanner() {
   return (
     <div className="relative bg-[#0a0a0a] text-white overflow-hidden min-h-[600px] lg:min-h-[750px] flex items-center bg-noise w-full">
       
-      {/* Background Gradients (No model images, just clean dark gradients) */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-red-900/20 via-[#0a0a0a] to-[#0a0a0a] z-0 pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0"></div>
+      {/* Background Gradients & Glows */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-900/40 via-[#0a0a0a]/80 to-[#0a0a0a] z-0 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none z-0"></div>
       
-      {/* Content Container */}
+      {/* Background Model Image (Restored) */}
+      <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full z-0 opacity-40 lg:opacity-70">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 hidden lg:block"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+          alt="Cultura Urbana" 
+          className="w-full h-full object-cover object-right grayscale-[30%] contrast-125"
+        />
+        {/* Grunge Text Overlay in Background */}
+        <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 opacity-10 md:opacity-20 z-10">
+          <span className="font-display font-black text-6xl md:text-9xl tracking-tighter text-white/50 writing-vertical-rl rotate-180">
+            SNEAKERZAR
+          </span>
+        </div>
+      </div>
+      
+      {/* Content Container - Centered properly */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-full relative z-30 py-12 md:py-20 flex flex-col lg:flex-row items-center justify-between">
         
         {/* Left Column: Text */}
@@ -21,7 +38,7 @@ export default function HeroBanner() {
           </div>
 
           <div className="relative inline-block mb-4 md:mb-6">
-            <h1 className="font-display font-black text-[5rem] sm:text-[7rem] md:text-[8.5rem] lg:text-[10rem] xl:text-[11.5rem] leading-[0.8] uppercase tracking-tighter drop-shadow-2xl text-white">
+            <h1 className="font-display font-black text-[5rem] sm:text-[7rem] md:text-[9rem] lg:text-[10rem] xl:text-[11.5rem] leading-[0.8] uppercase tracking-tighter drop-shadow-2xl text-white">
               DUEÑOS
               <br/>
               CALLES
@@ -47,19 +64,9 @@ export default function HeroBanner() {
           </div>
         </div>
 
-        {/* Right Column: Only ONE clean shoe image */}
+        {/* Right Column: Badges ONLY (No floating sneaker) */}
         <div className="w-full lg:w-1/2 mt-12 lg:mt-0 relative h-[350px] sm:h-[450px] md:h-[500px] lg:h-[650px] z-30 flex justify-center items-center">
           
-          <div className="relative z-30 w-[100%] sm:w-[90%] md:w-[80%] lg:w-[120%] xl:w-[130%] max-w-[800px] animate-[bounce_6s_ease-in-out_infinite] lg:-ml-10">
-            {/* Single clean image, no models underneath */}
-            <img 
-              src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-              alt="Jordan 1 Exclusivo" 
-              className="w-full h-auto object-contain mix-blend-screen drop-shadow-[0_20px_40px_rgba(230,57,70,0.4)]"
-              style={{ filter: 'contrast(1.25) brightness(1.1)' }}
-            />
-          </div>
-
           {/* Right Vertical Product Badge */}
           <div className="absolute right-0 lg:-right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:block">
             <div className="flex flex-col items-center shadow-2xl">
