@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Target, ShieldCheck, TrendingUp, Instagram, Twitter } from 'lucide-react';
+import { ArrowRight, Zap, Target, ShieldCheck, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HeroBanner() {
@@ -94,8 +94,8 @@ export default function HeroBanner() {
           {/* Social Links Estilo Urbano */}
           <motion.div variants={itemVariants} className="flex gap-6 mt-10 items-center">
             <span className="text-gray-500 text-sm font-display tracking-widest">SÍGUENOS:</span>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Twitter size={20} /></a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors font-display text-xl">IG</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors font-display text-xl">X</a>
           </motion.div>
         </div>
 
