@@ -56,8 +56,8 @@ export default function HeroBanner() {
         className="w-full h-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-30 flex flex-col lg:flex-row items-center justify-between pb-16"
       >
         
-        {/* TEXTO IZQUIERDO */}
-        <div className="w-full lg:w-[45%] relative z-40 text-left flex flex-col items-start pt-10 lg:pt-0">
+        {/* TEXTO IZQUIERDO: Exactamente 50% */}
+        <div className="w-full lg:w-1/2 relative z-40 text-left flex flex-col items-start pt-10 lg:pt-0 pr-0 lg:pr-10">
           
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#111111] border border-white/20 px-4 py-1.5 mb-6 font-body text-xs font-bold tracking-widest text-white shadow-lg rounded-full">
             <Zap size={14} className="text-[#E63946] fill-[#E63946] animate-pulse" />
@@ -74,7 +74,7 @@ export default function HeroBanner() {
               initial={{ scale: 0, rotate: -45, opacity: 0 }}
               animate={{ scale: 1, rotate: -15, opacity: 1 }}
               transition={{ delay: 0.8, type: "spring", stiffness: 200, damping: 10 }}
-              className="absolute top-[35%] right-10 font-marker text-[#E63946] text-3xl sm:text-4xl md:text-5xl drop-shadow-[0_5px_5px_rgba(230,57,70,0.5)] z-50 pointer-events-none"
+              className="absolute top-[35%] right-0 font-marker text-[#E63946] text-3xl sm:text-4xl md:text-5xl drop-shadow-[0_5px_5px_rgba(230,57,70,0.5)] z-50 pointer-events-none"
             >
               Y pisa fuerte
             </motion.span>
@@ -91,23 +91,36 @@ export default function HeroBanner() {
             </Link>
           </motion.div>
 
-          {/* Social Links Estilo Urbano */}
-          <motion.div variants={itemVariants} className="flex gap-6 mt-10 items-center">
-            <span className="text-gray-500 text-sm font-display tracking-widest">SÍGUENOS:</span>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors font-display text-xl">IG</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors font-display text-xl">X</a>
+          {/* Social Links con iconos completos SVG */}
+          <motion.div variants={itemVariants} className="flex gap-5 mt-10 items-center">
+            <span className="text-gray-500 text-sm font-display tracking-widest mr-2">SÍGUENOS:</span>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            </a>
           </motion.div>
         </div>
 
-        {/* ZAPATILLA GIGANTE DERECHA Y ELEMENTOS FLOTANTES */}
+        {/* ZAPATILLA GIGANTE DERECHA: Exactamente 50% */}
         <motion.div 
           initial={{ opacity: 0, x: 100, scale: 0.9 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="w-full lg:w-[50%] mt-12 lg:mt-0 relative z-30 flex justify-center lg:justify-end items-center h-[400px] lg:h-full"
+          className="w-full lg:w-1/2 mt-12 lg:mt-0 relative z-30 flex justify-center lg:justify-end items-center h-[400px] lg:h-full"
         >
           {/* Texto Circular Animado SVG */}
-          <div className="absolute top-0 right-[20%] w-32 h-32 animate-spin-slow opacity-40 z-10 pointer-events-none hidden lg:block" style={{ animationDuration: '15s' }}>
+          <div className="absolute top-10 right-[30%] w-32 h-32 animate-spin-slow opacity-30 z-10 pointer-events-none hidden lg:block" style={{ animationDuration: '15s' }}>
             <svg viewBox="0 0 100 100" width="100" height="100">
               <defs>
                 <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
@@ -120,18 +133,17 @@ export default function HeroBanner() {
             </svg>
           </div>
 
-          {/* Zapatilla Transparente Flotante */}
+          {/* Zapatilla Adidas Transparente Flotante */}
           <motion.div 
-            animate={{ y: [-20, 20, -20], rotate: [-2, 1, -2] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative z-30 w-full lg:w-[130%] max-w-[900px] pointer-events-none"
+            animate={{ y: [-10, 10, -10] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative z-30 w-[90%] md:w-[80%] lg:w-[100%] max-w-[600px] pointer-events-none flex justify-center"
           >
-            {/* Usando una imagen PNG transparente de unos tenis */}
+            {/* Zapatilla Adidas PNG Transparente */}
             <img 
-              src="https://www.pngall.com/wp-content/uploads/13/Nike-Shoes-Air-Max-PNG.png" 
-              alt="Sneaker Hype Transparente" 
-              className="w-full h-auto object-contain drop-shadow-[0_30px_30px_rgba(230,57,70,0.5)] scale-110"
-              style={{ filter: 'contrast(1.1)' }}
+              src="https://freepngimg.com/thumb/adidas/58249-sneakers-adidas-shoe-yeezy-boost-350-hq-image-free-png.png" 
+              alt="Adidas Yeezy Transparente" 
+              className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(230,57,70,0.4)]"
             />
           </motion.div>
 
@@ -140,7 +152,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, type: "spring" }}
-            className="absolute bottom-10 left-0 lg:-left-20 z-40 bg-[#111111]/80 backdrop-blur-md border border-white/10 p-4 flex items-center gap-4 shadow-xl rounded-lg hidden sm:flex"
+            className="absolute bottom-10 left-10 lg:left-0 z-40 bg-[#111111]/90 backdrop-blur-md border border-white/10 p-4 flex items-center gap-4 shadow-xl rounded-lg hidden sm:flex"
           >
             <div className="bg-[#E63946]/20 p-2 rounded-full">
               <ShieldCheck size={24} className="text-[#E63946]" />
@@ -156,11 +168,11 @@ export default function HeroBanner() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4, type: "spring" }}
-            className="absolute top-20 right-0 z-40 bg-white text-black p-3 flex items-center gap-3 shadow-[0_10px_30px_rgba(230,57,70,0.3)] hidden md:flex"
+            className="absolute top-20 right-0 lg:right-10 z-40 bg-white text-black p-3 flex items-center gap-3 shadow-[0_10px_30px_rgba(230,57,70,0.3)] hidden md:flex"
           >
             <TrendingUp size={20} className="text-[#E63946]" />
             <div>
-              <p className="font-display font-black tracking-widest leading-none">+5K VENDIDOS</p>
+              <p className="font-display font-black tracking-widest leading-none">+10K VENDIDOS</p>
             </div>
           </motion.div>
 
