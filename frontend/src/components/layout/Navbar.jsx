@@ -15,47 +15,47 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm font-display relative">
-      <div className="container mx-auto px-4 max-w-7xl py-4 flex items-center justify-between">
+    <nav className="bg-[#050505] sticky top-0 z-50 border-b border-white/10 shadow-2xl font-display relative">
+      <div className="container mx-auto px-4 max-w-7xl py-5 flex items-center justify-between">
         
         {/* Mobile Menu Button */}
         <button 
-          className="lg:hidden text-black p-2 -ml-2"
+          className="lg:hidden text-white p-2 -ml-2 hover:text-[#E63946] transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <Menu size={24} strokeWidth={2.5} />
+          <Menu size={28} strokeWidth={2.5} />
         </button>
 
         {/* Logo */}
-        <Link to="/" className="text-3xl md:text-4xl font-black tracking-tighter italic lg:mr-8 text-black z-50">
-          SNEAKERZAR
+        <Link to="/" className="text-4xl md:text-5xl font-black tracking-tighter italic lg:mr-8 text-white z-50 flex items-center">
+          ZAR<span className="text-[#E63946]">KICKS</span>
         </Link>
 
         {/* Center Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-8 font-bold text-lg tracking-wide">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-10 font-bold text-xl tracking-wider">
           {navLinks.map((link, i) => (
             <Link 
               key={i} 
               to={link.path}
-              className={`flex items-center gap-1 hover:text-primary transition-colors ${link.isRed ? 'text-[#E63946]' : 'text-black'}`}
+              className={`flex items-center gap-1 hover:text-[#E63946] hover:-translate-y-0.5 transition-all duration-300 ${link.isRed ? 'text-[#E63946]' : 'text-gray-200'}`}
             >
               {link.name}
-              {link.hasDropdown && <ChevronDown size={16} strokeWidth={3} className="text-black/60" />}
+              {link.hasDropdown && <ChevronDown size={18} strokeWidth={3} className="text-gray-500" />}
             </Link>
           ))}
         </div>
 
         {/* Right Icons */}
-        <div className="flex items-center gap-3 sm:gap-6 text-black z-50">
-          <button className="hover:text-primary transition-colors p-1">
-            <Search size={22} strokeWidth={2.5} />
+        <div className="flex items-center gap-4 sm:gap-8 text-white z-50">
+          <button className="hover:text-[#E63946] transition-colors p-1">
+            <Search size={24} strokeWidth={2.5} />
           </button>
-          <button className="hover:text-primary transition-colors hidden sm:block p-1">
-            <User size={22} strokeWidth={2.5} />
+          <button className="hover:text-[#E63946] transition-colors hidden sm:block p-1">
+            <User size={24} strokeWidth={2.5} />
           </button>
-          <button className="hover:text-primary transition-colors relative flex items-center p-1">
-            <ShoppingCart size={22} strokeWidth={2.5} />
-            <span className="absolute -top-1 -right-2 bg-[#E63946] text-white text-[11px] font-bold font-body w-[18px] h-[18px] rounded-full flex items-center justify-center">
+          <button className="group hover:text-[#E63946] transition-colors relative flex items-center p-1">
+            <ShoppingCart size={24} strokeWidth={2.5} />
+            <span className="absolute -top-1 -right-2 bg-[#E63946] text-white text-[12px] font-bold font-body w-[20px] h-[20px] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
               0
             </span>
           </button>
@@ -64,16 +64,16 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl flex flex-col font-bold text-lg">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-white/10 shadow-xl flex flex-col font-bold text-2xl">
           {navLinks.map((link, i) => (
             <Link 
               key={i} 
               to={link.path}
-              className={`p-4 border-b border-gray-50 flex items-center justify-between hover:bg-gray-50 ${link.isRed ? 'text-[#E63946]' : 'text-black'}`}
+              className={`p-6 border-b border-white/5 flex items-center justify-between hover:bg-white/5 ${link.isRed ? 'text-[#E63946]' : 'text-white'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
-              {link.hasDropdown && <ChevronDown size={16} strokeWidth={3} className="text-black/40" />}
+              {link.hasDropdown && <ChevronDown size={20} strokeWidth={3} className="text-gray-500" />}
             </Link>
           ))}
         </div>
