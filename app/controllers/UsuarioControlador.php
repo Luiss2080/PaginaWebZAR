@@ -1,4 +1,4 @@
-<?php
+|<?php
 /**
  * Controlador de Usuario (Wishlist, Profile, etc.)
  */
