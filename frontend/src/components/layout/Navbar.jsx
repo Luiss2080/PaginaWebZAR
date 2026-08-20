@@ -7,11 +7,11 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'NUEVOS', path: '/nuevos' },
-    { name: 'SNEAKERS', path: '/sneakers', hasDropdown: true },
-    { name: 'ROPA', path: '/ropa', hasDropdown: true },
-    { name: 'ACCESORIOS', path: '/accesorios', hasDropdown: true },
+    { name: 'JORDAN', path: '/jordan', hasDropdown: true },
+    { name: 'NIKE', path: '/nike', hasDropdown: true },
+    { name: 'ADIDAS', path: '/adidas', hasDropdown: true },
+    { name: 'YEEZY', path: '/yeezy', hasDropdown: true },
     { name: 'OFERTAS', path: '/ofertas', isRed: true },
-    { name: 'MARCAS', path: '/marcas', hasDropdown: true },
   ];
 
   return (
@@ -28,7 +28,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="text-3xl md:text-4xl font-black tracking-tighter italic lg:mr-8 text-black z-50">
-          KICKDISTRICT
+          SNEAKERZAR
         </Link>
 
         {/* Center Links (Desktop) */}
