@@ -66,8 +66,8 @@ export default function HeroBanner() {
 
           <div className="relative inline-block mb-4 md:mb-6 w-full">
             <motion.h1 variants={itemVariants} className="font-display font-black text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] uppercase tracking-tighter text-white">
-              <span className="block drop-shadow-md">ROMPÉ</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">LAS REGLAS</span>
+              <span className="block drop-shadow-md">ROMPÉ LAS</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">REGLAS</span>
             </motion.h1>
             
             <motion.span 
@@ -80,34 +80,43 @@ export default function HeroBanner() {
             </motion.span>
           </div>
           
-          <motion.p variants={itemVariants} className="text-gray-400 text-base md:text-lg font-medium max-w-md mb-8 leading-relaxed font-body border-l-2 border-[#E63946] pl-4">
-            Sneakers limitados para verdaderos coleccionistas. Si es <span className="text-white font-bold">HYPE</span>, lo tenemos nosotros primero. 100% Originales.
+          <motion.p variants={itemVariants} className="text-gray-300 text-lg md:text-xl font-medium max-w-2xl mb-10 leading-relaxed font-body border-l-4 border-[#E63946] pl-5">
+            Descubre nuestra colección exclusiva de sneakers limitados para verdaderos coleccionistas. Diseños que marcan tendencia en la cultura urbana global. Si es <span className="text-white font-bold">HYPE</span> y acaba de salir, ten por seguro que lo tenemos nosotros primero. Calidad premium garantizada y 100% Originales.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex gap-4 w-full sm:w-auto">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full">
             <Link to="/catalogo" className="group bg-[#E63946] text-white font-display text-lg uppercase tracking-widest py-3 px-8 transition-all duration-300 hover:bg-white hover:text-black shadow-[0_0_15px_rgba(230,57,70,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] flex items-center justify-center gap-3 w-full sm:w-auto">
               EXPLORAR DROPS
               <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-300" />
             </Link>
+            <Link to="/marcas/adidas" className="group bg-transparent border-2 border-white/30 text-white font-display text-lg uppercase tracking-widest py-3 px-8 transition-all duration-300 hover:border-white hover:bg-white/5 flex items-center justify-center gap-3 w-full sm:w-auto">
+              VER COLECCIÓN ADIDAS
+            </Link>
           </motion.div>
 
-          {/* Social Links con iconos completos SVG */}
-          <motion.div variants={itemVariants} className="flex gap-5 mt-10 items-center">
+          {/* Social Links con iconos completos SVG más grandes */}
+          <motion.div variants={itemVariants} className="flex gap-6 mt-12 items-center flex-wrap">
             <span className="text-gray-500 text-sm font-display tracking-widest mr-2">SÍGUENOS:</span>
             <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 11.5c1.5-1 3.5-1.5 5.5-1.5s4 .5 5.5 1.5"></path><path d="M8 15c1.5-1 3.5-1.5 5.5-1.5s4 .5 5.5 1.5"></path></svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
             </a>
           </motion.div>
         </div>
@@ -119,6 +128,9 @@ export default function HeroBanner() {
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="w-full lg:w-1/2 mt-12 lg:mt-0 relative z-30 flex justify-center lg:justify-end items-center h-[400px] lg:h-full"
         >
+          {/* Fondo negro puro detrás de la imagen para garantizar que el mix-blend-screen funcione perfectamente sin importar los destellos rojos del fondo global */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-black rounded-full blur-[80px] z-20 pointer-events-none"></div>
+
           {/* Texto Circular Animado SVG */}
           <div className="absolute top-10 right-[30%] w-32 h-32 animate-spin-slow opacity-30 z-10 pointer-events-none hidden lg:block" style={{ animationDuration: '15s' }}>
             <svg viewBox="0 0 100 100" width="100" height="100">
@@ -137,13 +149,14 @@ export default function HeroBanner() {
           <motion.div 
             animate={{ y: [-10, 10, -10] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative z-30 w-[90%] md:w-[80%] lg:w-[100%] max-w-[600px] pointer-events-none flex justify-center"
+            className="relative z-30 w-[90%] md:w-[80%] lg:w-[100%] max-w-[650px] pointer-events-none flex justify-center"
           >
-            {/* Zapatilla Adidas PNG Transparente */}
+            {/* Zapatilla Adidas de Unsplash con fondo oscuro -> mix-blend-screen la hace transparente */}
             <img 
-              src="https://freepngimg.com/thumb/adidas/58249-sneakers-adidas-shoe-yeezy-boost-350-hq-image-free-png.png" 
-              alt="Adidas Yeezy Transparente" 
-              className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(230,57,70,0.4)]"
+              src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?auto=format&fit=crop&w=1200&q=80" 
+              alt="Adidas Sneaker Hype" 
+              className="w-full h-auto object-contain mix-blend-screen drop-shadow-[0_20px_30px_rgba(230,57,70,0.3)] scale-110"
+              style={{ filter: 'contrast(1.3) brightness(1.2)' }}
             />
           </motion.div>
 
