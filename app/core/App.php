@@ -6,7 +6,7 @@
 
 class App {
     
-    protected $controller = 'HomeController';
+    protected $controller = 'InicioControlador';
     protected $method = 'index';
     protected $params = [];
     
@@ -30,21 +30,21 @@ class App {
         
         // Manejar rutas especiales
         if (empty($url[0])) {
-            $this->controller = 'HomeController';
-        } elseif ($url[0] === 'products') {
-            $this->controller = 'ProductController';
-        } elseif ($url[0] === 'cart') {
-            $this->controller = 'CartController';
-        } elseif ($url[0] === 'checkout') {
-            $this->controller = 'CheckoutController';
-        } elseif ($url[0] === 'pages') {
-            $this->controller = 'PagesController';
-        } elseif ($url[0] === 'user') {
-            $this->controller = 'UserController';
+            $this->controller = 'InicioControlador';
+        } elseif ($url[0] === 'productos' || $url[0] === 'products') {
+            $this->controller = 'ProductosControlador';
+        } elseif ($url[0] === 'carrito' || $url[0] === 'cart') {
+            $this->controller = 'CarritoControlador';
+        } elseif ($url[0] === 'pago' || $url[0] === 'checkout') {
+            $this->controller = 'PagoControlador';
+        } elseif ($url[0] === 'paginas' || $url[0] === 'pages') {
+            $this->controller = 'PaginasControlador';
+        } elseif ($url[0] === 'usuario' || $url[0] === 'user') {
+            $this->controller = 'UsuarioControlador';
         } else {
             // Verificar si el controlador existe
-            if (file_exists(APP_PATH . 'controllers/' . ucfirst($url[0]) . 'Controller.php')) {
-                $this->controller = ucfirst($url[0]) . 'Controller';
+            if (file_exists(APP_PATH . 'controllers/' . ucfirst($url[0]) . 'Controlador.php')) {
+                $this->controller = ucfirst($url[0]) . 'Controlador';
             }
         }
         

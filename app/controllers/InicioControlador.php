@@ -8,7 +8,7 @@ require_once APP_PATH . 'models/Product.php';
 require_once APP_PATH . 'models/Category.php';
 require_once APP_PATH . 'core/Database.php';
 
-class HomeController extends BaseController {
+class InicioControlador extends BaseController {
     
     private $productModel;
     private $categoryModel;
@@ -27,7 +27,7 @@ class HomeController extends BaseController {
             'recent_products' => $this->productModel->getRecent(8)
         ];
         
-        $this->render('home/index', $data);
+        $this->render('inicio/index', $data);
     }
     
     private function getFeaturedProducts() {
