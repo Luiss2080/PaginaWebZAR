@@ -1,45 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #E63946;
-  --color-dark: #050505;
-  --color-dark-gray: #111111;
-  --color-light: #F9FAFB;
-  
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-marker: 'Permanent Marker', cursive;
+  --color-blanco: #ffffff;
+  --color-tinta: #111111;
+  --color-carbon: #2b2b2b;
+  --color-gris: #f6f6f6;
+  --color-gris-medio: #767676;
+  --color-borde: #e5e5e5;
+
+  --font-titulo: 'Playfair Display', Georgia, serif;
+  --font-cuerpo: 'Inter', Helvetica, Arial, sans-serif;
 }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-dark);
-  color: white;
-}
-
-h1, h2, h3, h4, .font-display {
-  font-family: var(--font-display);
-  letter-spacing: 0.05em;
-}
-
-.font-marker {
-  font-family: var(--font-marker);
-}
-
-/* Utilidad para animar SVG rotando lento */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
   }
-  to {
-    transform: rotate(360deg);
+
+  body {
+    @apply bg-blanco text-tinta font-cuerpo;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-titulo;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-tinta);
+    outline-offset: 2px;
   }
 }
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
-}
 
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+@layer components {
+  .contenedor {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10;
+  }
+
+  .etiqueta {
+    @apply text-[11px] font-medium uppercase tracking-[0.22em];
+  }
+
+  .boton-primario {
+    @apply inline-flex items-center justify-center gap-2 bg-tinta px-8 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-blanco transition-colors hover:bg-carbon;
+  }
+
+  .boton-secundario {
+    @apply inline-flex items-center justify-center gap-2 border border-tinta px-8 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition-colors hover:bg-tinta hover:text-blanco;
+  }
+
+  .campo {
+    @apply w-full border border-borde bg-blanco px-4 py-3 text-sm outline-none transition-colors focus:border-tinta;
+  }
 }

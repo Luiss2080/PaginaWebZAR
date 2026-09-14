@@ -111,4 +111,4 @@ El repo contiene una app PHP MVC legada con un catálogo de moda en MySQL (`mult
 - No queda ninguna importación rota ni referencia a `components/` en inglés.
 
 ## Dudas abiertas
-- [NECESITA ACLARACIÓN] ¿El seed local debe replicar exactamente los 8 productos de `database/schema.sql` o preferís un catálogo de moda más amplio generado para la demo?
+- Ninguna. Decisión tomada: el seed local es un catálogo de moda de demostración con las mismas categorías de `database/schema.sql` (Mujer, Hombre, Niños, Accesorios), ampliado con tallas y colores. Se documenta como respaldo en `plan.md`.
