@@ -27,7 +27,8 @@ La interfaz activa es una SPA en **React 19 + Vite + Tailwind CSS v4 + react-rou
 cd frontend
 npm install
 npm run dev      # http://localhost:5173
-npm test         # tests (node --test)
+npm test         # tests unitarios (node --test)
+npm run test:api # pruebas de integración de la API PHP
 ```
 
 Consume el catálogo por una capa única (`frontend/src/servicios/api.js`) con dos modos:
