@@ -43,9 +43,9 @@ La migración `scripts/migracion_catalogo.php` (idempotente) crea y siembra `bra
 php scripts/migracion_catalogo.php   # migración 002
 ```
 
-Con la API activa, la SPA guarda el **carrito** (`cart_items`), los **favoritos** (`wishlist_items`) y la **sesión** (`users` con `password_hash`) en la BD; sin backend, sigue funcionando con el respaldo local. Usuario demo: `demo@zara.test` / `demo1234`.
+Con la API activa, la SPA guarda el **carrito** (`cart_items`), los **favoritos** (`wishlist_items`), la **sesión** (`users` con `password_hash`) y los **pedidos** (`orders` + `order_items` vía checkout) en la BD; sin backend, sigue funcionando con el respaldo local. Usuario demo: `demo@zara.test` / `demo1234`.
 
-Especificación SDD en `docs/constitution.md`, `specs/001-tienda-moda-zara/` y `specs/002-datos-dinamicos-bd/`.
+Especificación SDD en `docs/constitution.md`, `specs/001-tienda-moda-zara/`, `specs/002-datos-dinamicos-bd/` y `specs/003-checkout-pedidos/`.
 
 ---
 

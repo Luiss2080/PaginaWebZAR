@@ -12,7 +12,7 @@ npm run lint     # oxlint
 
 ## Datos (dos modos)
 - **Respaldo local (por defecto):** usa el catálogo de `src/datos/catalogo.js`. No requiere backend.
-- **API PHP:** copia `.env.example` a `.env` (con `VITE_API_BASE=`). La SPA consume `/api/productos`, `/api/categorias`, `/api/marcas` y `/api/buscar` a través del proxy de Vite (`/api` → `http://localhost:8080`). En este modo el **carrito**, los **favoritos** y la **sesión** también se guardan en MySQL (usuario demo `demo@zara.test` / `demo1234`).
+- **API PHP:** copia `.env.example` a `.env` (con `VITE_API_BASE=`). La SPA consume `/api/productos`, `/api/categorias`, `/api/marcas` y `/api/buscar` a través del proxy de Vite (`/api` → `http://localhost:8080`). En este modo el **carrito**, los **favoritos**, la **sesión** y los **pedidos** (checkout en `/checkout` y `/pedidos`) también se guardan en MySQL (usuario demo `demo@zara.test` / `demo1234`).
 
 Arranca el backend y aplica la migración en la raíz del repositorio:
 ```bash
