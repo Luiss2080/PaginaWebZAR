@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "test": "node --test",
+    "test:api": "node ../scripts/pruebas_api.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
