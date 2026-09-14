@@ -10,6 +10,7 @@ El repositorio también contiene una aplicación heredada en **PHP 8 MVC puro** 
 - Ejecutar SPA (dev): `npm run dev` (en `frontend/`, Vite en `http://localhost:5173`)
 - Build: `npm run build` (en `frontend/`)
 - Lint: `npm run lint` (en `frontend/`, oxlint)
+- Tests: `npm test` (en `frontend/`, runner integrado de Node `node --test`; no añade dependencias)
 - Backend PHP: `php -S localhost:8080 index.php` (en la raíz; sirve la API `/api/...` y la app legada)
 - API desde la SPA: copiar `frontend/.env.example` a `frontend/.env` (activa el proxy `/api` → `:8080`)
 - Base de datos: `php scripts/migracion_catalogo.php` (migración idempotente: marcas, variantes, imágenes y usuario demo `demo@zara.test` / `demo1234`)
