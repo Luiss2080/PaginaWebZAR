@@ -16,7 +16,7 @@ export default function Registro() {
 
   useSeo('Crear cuenta — ZARA', 'Regístrate en ZARA para guardar favoritos y agilizar tus compras.');
 
-  const enviar = (evento) => {
+  const enviar = async (evento) => {
     evento.preventDefault();
     const nuevos = {};
     if (!nombre.trim()) nuevos.nombre = 'Introduce tu nombre.';
@@ -29,7 +29,11 @@ export default function Registro() {
     setErrores(nuevos);
     if (Object.keys(nuevos).length > 0) return;
 
-    registrar({ nombre: nombre.trim(), email });
+    const resultado = await registrar({ nombre: nombre.trim(), email, password });
+    if (!resultado.ok) {
+      setErrores({ general: resultado.error || 'No se pudo crear la cuenta.' });
+      return;
+    }
     navegar('/');
   };
 
@@ -101,6 +105,12 @@ export default function Registro() {
             />
             {errores.confirmar && <p className="mt-1 text-xs text-tinta">{errores.confirmar}</p>}
           </div>
+
+          {errores.general && (
+            <p role="alert" className="text-xs text-tinta">
+              {errores.general}
+            </p>
+          )}
 
           <button type="submit" className="boton-primario w-full">
             Crear cuenta

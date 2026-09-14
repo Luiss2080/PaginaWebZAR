@@ -14,7 +14,7 @@ export default function Login() {
 
   useSeo('Iniciar sesión — ZARA', 'Accede a tu cuenta ZARA para gestionar favoritos y pedidos.');
 
-  const enviar = (evento) => {
+  const enviar = async (evento) => {
     evento.preventDefault();
     const nuevos = {};
     if (!email.trim()) nuevos.email = 'Introduce tu correo electrónico.';
@@ -25,7 +25,11 @@ export default function Login() {
     setErrores(nuevos);
     if (Object.keys(nuevos).length > 0) return;
 
-    iniciarSesion({ email });
+    const resultado = await iniciarSesion({ email, password });
+    if (!resultado.ok) {
+      setErrores({ general: resultado.error || 'No se pudo iniciar sesión.' });
+      return;
+    }
     navegar('/');
   };
 
@@ -67,6 +71,12 @@ export default function Login() {
             />
             {errores.password && <p className="mt-1 text-xs text-tinta">{errores.password}</p>}
           </div>
+
+          {errores.general && (
+            <p role="alert" className="text-xs text-tinta">
+              {errores.general}
+            </p>
+          )}
 
           <button type="submit" className="boton-primario w-full">
             Entrar
