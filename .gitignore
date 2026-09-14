@@ -298,3 +298,6 @@ docs/api/
 # Archivos markdown temporales
 *.tmp.md
 draft_*.md
+
+# Artefactos de pruebas con navegador (Playwright MCP)
+.playwright-mcp/

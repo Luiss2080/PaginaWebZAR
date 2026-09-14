@@ -1,16 +1,38 @@
-# React + Vite
+# ZARA — SPA de moda
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Interfaz de tienda de moda editorial construida con **React 19 + Vite + Tailwind CSS v4 + react-router-dom v7 + framer-motion**.
 
-Currently, two official plugins are available:
+## Comandos
+```bash
+npm install      # instalar dependencias
+npm run dev      # servidor de desarrollo en http://localhost:5173
+npm run build    # build de producción
+npm run lint     # oxlint
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Datos (dos modos)
+- **Respaldo local (por defecto):** usa el catálogo de `src/datos/catalogo.js`. No requiere backend.
+- **API PHP:** copia `.env.example` a `.env` (con `VITE_API_BASE=`). La SPA consume `/api/productos`, `/api/categorias`, `/api/marcas` y `/api/buscar` a través del proxy de Vite (`/api` → `http://localhost:8080`).
 
-## React Compiler
+Arranca el backend en la raíz del repositorio:
+```bash
+php -S localhost:8080 index.php
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Si el backend no responde (o devuelve un catálogo vacío), la SPA cae al respaldo local y muestra un aviso. Toda lectura de datos pasa por `src/servicios/api.js`.
 
-## Expanding the Oxlint configuration
+## Estructura
+```
+src/
+├── componentes/layout/   Topbar, Header, Footer, Layout
+├── componentes/ui/       ProductoCard, DrawerCarrito, PanelBusqueda, ...
+├── secciones/inicio/     BannerPrincipal, CategoriasPopulares, ...
+├── paginas/              Inicio, Catalogo, DetalleProducto, Favoritos, Login, ...
+├── contextos/            Carrito, Favoritos, Cuenta y Búsqueda (Context + useReducer)
+├── servicios/            api.js, hooks.js, almacenamiento.js
+└── datos/                catalogo.js (respaldo local)
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Documentación SDD
+- `../docs/constitution.md`
+- `../specs/001-tienda-moda-zara/spec.md`, `plan.md`, `tasks.md`, `validation.md`
