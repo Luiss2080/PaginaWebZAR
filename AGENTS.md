@@ -10,7 +10,8 @@ El repositorio también contiene una aplicación heredada en **PHP 8 MVC puro** 
 - Ejecutar SPA (dev): `npm run dev` (en `frontend/`, Vite en `http://localhost:5173`)
 - Build: `npm run build` (en `frontend/`)
 - Lint: `npm run lint` (en `frontend/`, oxlint)
-- Backend PHP: `php -S localhost:8080` (en la raíz; sirve la API y la app legada)
+- Backend PHP: `php -S localhost:8080 index.php` (en la raíz; sirve la API `/api/...` y la app legada)
+- API desde la SPA: copiar `frontend/.env.example` a `frontend/.env` (activa el proxy `/api` → `:8080`)
 
 ## Estilo y convenciones
 - Idioma del código, carpetas, comentarios y mensajes de UI: **español** (`componentes`, `paginas`, `secciones`, `servicios`, `contextos`, `datos`).

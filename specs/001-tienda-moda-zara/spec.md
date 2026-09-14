@@ -72,8 +72,10 @@ El repo contiene una app PHP MVC legada con un catálogo de moda en MySQL (`mult
 
 ### Datos y API
 - RF-35: EL SISTEMA obtiene categorías y productos exclusivamente a través de `src/servicios/api.js`, sin listas hardcodeadas en los componentes.
-- RF-36: CUANDO `VITE_API_BASE` apunta al backend PHP, EL SISTEMA consume los endpoints JSON `/api/products`, `/api/products/{id}`, `/api/categories`, `/api/brands` y `/api/search`.
-- RF-37: SI el backend no responde, ENTONCES EL SISTEMA usa los datos locales de respaldo y muestra un aviso no bloqueante.
+- RF-36: CUANDO `VITE_API_BASE` está definido, EL SISTEMA consume los endpoints JSON reales del backend PHP: `/api/productos`, `/api/productos/{id}`, `/api/categorias`, `/api/marcas` y `/api/buscar?q=...`.
+- RF-37: SI el backend no responde o devuelve un catálogo vacío, ENTONCES EL SISTEMA usa los datos locales de respaldo y muestra un aviso no bloqueante.
+
+> Nota de verdad: la base de datos `multishop_db` usa columnas distintas a `database/schema.sql` (`is_active`, `is_featured`, `sale_price`, `image`; no existen `brands` ni `product_images`). La API consulta el esquema real y completa con valores por defecto los campos ausentes (tallas, colores).
 
 ### Otros
 - RF-38: CUANDO el usuario visita una ruta inexistente, EL SISTEMA muestra una página 404 con enlace al inicio.

@@ -1,0 +1,110 @@
+- generic [ref=f11e3]:
+  - generic [ref=f11e5]:
+    - generic [ref=f11e6]: Envíos gratis a partir de 30 €
+    - generic [ref=f11e7]: Devoluciones gratuitas en 30 días
+  - banner [ref=f11e8]:
+    - generic [ref=f11e9]:
+      - link "ZARA" [ref=f11e10] [cursor=pointer]:
+        - /url: /
+      - navigation "Categorías" [ref=f11e11]:
+        - link "Nuevos" [ref=f11e12] [cursor=pointer]:
+          - /url: /catalogo
+      - generic [ref=f11e13]:
+        - button "Buscar" [ref=f11e14]
+        - link "Favoritos (1)" [ref=f11e18] [cursor=pointer]:
+          - /url: /favoritos
+          - generic [ref=f11e21]: "1"
+        - button "Cuenta" [ref=f11e23]
+        - button "Carrito (1)" [ref=f11e27]:
+          - generic [ref=f11e31]: "1"
+  - main [ref=f11e32]:
+    - generic [ref=f11e33]:
+      - navigation "Migas de pan" [ref=f11e34]:
+        - list [ref=f11e35]:
+          - listitem [ref=f11e36]:
+            - link "Inicio" [ref=f11e37] [cursor=pointer]:
+              - /url: /
+            - generic [aria-hidden] [ref=f11e38]: /
+          - listitem [ref=f11e39]:
+            - generic [ref=f11e40]: Catálogo
+      - generic [ref=f11e41]:
+        - complementary "Filtros" [ref=f11e42]:
+          - generic [ref=f11e43]:
+            - heading "Filtrar" [level=1] [ref=f11e44]
+            - button "Limpiar" [ref=f11e45]
+          - generic [ref=f11e46]:
+            - heading "Categoría" [level=2] [ref=f11e47]
+            - list
+          - heading "Talla" [level=2] [ref=f11e49]
+          - heading "Color" [level=2] [ref=f11e51]
+          - generic [ref=f11e52]:
+            - heading "Precio (€)" [level=2] [ref=f11e53]
+            - generic [ref=f11e54]:
+              - spinbutton "Precio mínimo" [ref=f11e55]
+              - spinbutton "Precio máximo" [ref=f11e56]
+        - generic [ref=f11e58]:
+          - paragraph [ref=f11e59]: Cargando…
+          - generic [ref=f11e60]:
+            - generic [ref=f11e61]: Ordenar
+            - combobox "Ordenar" [ref=f11e62]:
+              - option "Novedades" [selected]
+              - 'option "Precio: de menor a mayor"'
+              - 'option "Precio: de mayor a menor"'
+  - contentinfo [ref=f11e97]:
+    - generic [ref=f11e98]:
+      - generic [ref=f11e99]:
+        - link "ZARA" [ref=f11e100] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f11e101]: Colecciones de temporada para mujer, hombre y niños. Diseño atemporal, materiales duraderos y envíos a todo el país.
+        - generic [ref=f11e102]:
+          - text: Recibe las novedades
+          - generic [ref=f11e103]:
+            - textbox "Recibe las novedades" [ref=f11e104]:
+              - /placeholder: tu@correo.com
+            - button "Suscribirme" [ref=f11e105]
+      - generic [ref=f11e106]:
+        - generic [ref=f11e107]:
+          - heading "Comprar" [level=2] [ref=f11e108]
+          - list [ref=f11e109]:
+            - listitem [ref=f11e110]:
+              - link "Novedades" [ref=f11e111] [cursor=pointer]:
+                - /url: /catalogo
+            - listitem [ref=f11e112]:
+              - link "Mujer" [ref=f11e113] [cursor=pointer]:
+                - /url: /catalogo?categoria=mujer
+            - listitem [ref=f11e114]:
+              - link "Hombre" [ref=f11e115] [cursor=pointer]:
+                - /url: /catalogo?categoria=hombre
+            - listitem [ref=f11e116]:
+              - link "Niños" [ref=f11e117] [cursor=pointer]:
+                - /url: /catalogo?categoria=ninos
+            - listitem [ref=f11e118]:
+              - link "Accesorios" [ref=f11e119] [cursor=pointer]:
+                - /url: /catalogo?categoria=accesorios
+        - generic [ref=f11e120]:
+          - heading "Ayuda" [level=2] [ref=f11e121]
+          - list [ref=f11e122]:
+            - listitem [ref=f11e123]:
+              - link "Envíos" [ref=f11e124] [cursor=pointer]:
+                - /url: /pagina/envios
+            - listitem [ref=f11e125]:
+              - link "Devoluciones" [ref=f11e126] [cursor=pointer]:
+                - /url: /pagina/devoluciones
+            - listitem [ref=f11e127]:
+              - link "Guía de tallas" [ref=f11e128] [cursor=pointer]:
+                - /url: /pagina/tallas
+            - listitem [ref=f11e129]:
+              - link "Contacto" [ref=f11e130] [cursor=pointer]:
+                - /url: /pagina/contacto
+        - generic [ref=f11e131]:
+          - heading "Legal" [level=2] [ref=f11e132]
+          - list [ref=f11e133]:
+            - listitem [ref=f11e134]:
+              - link "Términos" [ref=f11e135] [cursor=pointer]:
+                - /url: /pagina/terminos
+            - listitem [ref=f11e136]:
+              - link "Privacidad" [ref=f11e137] [cursor=pointer]:
+                - /url: /pagina/privacidad
+    - generic [ref=f11e139]:
+      - paragraph [ref=f11e140]: © 2026 ZARA. Todos los derechos reservados.
+      - paragraph [ref=f11e141]: Demo sin pasarela de pago real.

@@ -92,6 +92,8 @@ No hay runner de tests en el proyecto (no se añade dependencia). La verificaci�
 | Genéricos | RF-38, RF-39, RF-40, RF-41 |
 
 ## 6. Riesgos y mitigaciones
-- **Backend no arranca o DB vacía:** el seed local garantiza la demo; `api.js` degrada sin romper.
+- **Backend no arranca, DB vacía o responde vacío:** `api.js` degrada al seed local y muestra un aviso no bloqueante.
+- **Esquema real distinto a `schema.sql`:** la DB viva usa `is_active`/`is_featured`/`sale_price`/`image` y no tiene `brands`; `ApiControlador` consulta esas columnas y completa tallas/colores por defecto, sin tocar los modelos legados.
+- **Imágenes de la API:** se sirven desde `frontend/public/img/` (copia de `public/img/`) para que Vite las entregue sin depender del docroot de PHP.
 - **Enrutado PHP en servidor integrado:** se documenta `php -S localhost:8080 index.php`.
 - **Alcance amplio:** tareas pequeñas y cada una con lint+build verde evita deuda acumulada.
