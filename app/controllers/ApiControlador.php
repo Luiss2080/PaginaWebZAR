@@ -295,6 +295,154 @@ class ApiControlador extends BaseController {
     }
 
     // -----------------------------------------------------------------------
+    // Pedidos
+    // -----------------------------------------------------------------------
+
+    public function pedidos($accion = null) {
+        $metodo = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+        if ($accion === null) {
+            if ($metodo !== 'GET') {
+                $this->error('Método no permitido', 405);
+            }
+            if ($this->usuarioId() === null) {
+                $this->error('Inicia sesión para ver tus pedidos', 401);
+            }
+            $this->json($this->pedidosDelUsuario());
+        }
+
+        if ($metodo !== 'POST') {
+            $this->error('Método no permitido', 405);
+        }
+
+        if ($accion === 'crear') {
+            $this->crearPedido();
+        }
+
+        $this->error('Acción no válida', 404);
+    }
+
+    private function crearPedido() {
+        $usuarioId = $this->usuarioId();
+        if ($usuarioId === null) {
+            $this->error('Inicia sesión para confirmar el pedido', 401);
+        }
+
+        $nombre = trim((string)$this->entrada('nombre', ''));
+        $direccion = trim((string)$this->entrada('direccion', ''));
+        $ciudad = trim((string)$this->entrada('ciudad', ''));
+        $codigoPostal = trim((string)$this->entrada('codigoPostal', ''));
+        $pais = trim((string)$this->entrada('pais', ''));
+        if ($nombre === '' || $direccion === '' || $ciudad === '' || $codigoPostal === '' || $pais === '') {
+            $this->error('Completa la dirección de envío');
+        }
+
+        $lineas = $this->lineasCarrito();
+        if (count($lineas) === 0) {
+            $this->error('El carrito está vacío');
+        }
+
+        $subtotal = 0.0;
+        foreach ($lineas as $linea) {
+            $subtotal += $linea['precio'] * $linea['cantidad'];
+        }
+        $envio = $subtotal >= 30 ? 0.0 : 3.95;
+        $total = round($subtotal + $envio, 2);
+
+        $direccionTexto = json_encode([
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'ciudad' => $ciudad,
+            'codigoPostal' => $codigoPostal,
+            'pais' => $pais,
+            'telefono' => trim((string)$this->entrada('telefono', '')),
+        ], JSON_UNESCAPED_UNICODE);
+
+        $numero = 'ZR-' . date('Ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 5));
+
+        $db = Database::connect();
+        $db->beginTransaction();
+        try {
+            $stmt = $db->prepare(
+                'INSERT INTO orders (user_id, order_number, status, total_amount, shipping_amount,
+                        tax_amount, discount_amount, billing_address, shipping_address,
+                        payment_method, payment_status)
+                 VALUES (?, ?, ?, ?, ?, 0, 0, ?, ?, ?, ?)'
+            );
+            $stmt->execute([
+                $usuarioId,
+                $numero,
+                'pending',
+                $total,
+                $envio,
+                $direccionTexto,
+                $direccionTexto,
+                (string)$this->entrada('metodoPago', 'tarjeta'),
+                'pending',
+            ]);
+            $orderId = (int)$db->lastInsertId();
+
+            $insertarLinea = $db->prepare(
+                'INSERT INTO order_items (order_id, product_id, quantity, price, total)
+                 VALUES (?, ?, ?, ?, ?)'
+            );
+            foreach ($lineas as $linea) {
+                $insertarLinea->execute([
+                    $orderId,
+                    $linea['productoId'],
+                    $linea['cantidad'],
+                    $linea['precio'],
+                    round($linea['precio'] * $linea['cantidad'], 2),
+                ]);
+            }
+
+            $borrar = $db->prepare('DELETE FROM cart_items WHERE session_id = ?');
+            $borrar->execute([$this->sesionId()]);
+
+            $db->commit();
+        } catch (PDOException $error) {
+            $db->rollBack();
+            error_log('Error al crear el pedido: ' . $error->getMessage());
+            $this->error('No se pudo crear el pedido', 500);
+        }
+
+        $this->json(['pedido' => ['numero' => $numero, 'total' => $total, 'estado' => 'pending']]);
+    }
+
+    private function pedidosDelUsuario() {
+        $filas = $this->consultar(
+            'SELECT id, order_number, status, total_amount, created_at
+             FROM orders WHERE user_id = ? ORDER BY id DESC',
+            [$this->usuarioId()]
+        );
+
+        $pedidos = [];
+        foreach ($filas as $fila) {
+            $items = $this->consultar(
+                'SELECT oi.product_id, oi.quantity, oi.price, oi.total, p.name, p.image
+                 FROM order_items oi
+                 LEFT JOIN products p ON p.id = oi.product_id
+                 WHERE oi.order_id = ? ORDER BY oi.id',
+                [(int)$fila['id']]
+            );
+            $pedidos[] = [
+                'numero' => $fila['order_number'],
+                'estado' => $fila['status'],
+                'total' => (float)$fila['total_amount'],
+                'fecha' => $fila['created_at'],
+                'items' => array_map(fn($item) => [
+                    'nombre' => $item['name'] ?? 'Producto',
+                    'imagen' => $this->imagenProducto((int)$item['product_id'], $item['image'] ?? ''),
+                    'cantidad' => (int)$item['quantity'],
+                    'precio' => (float)$item['price'],
+                    'total' => (float)$item['total'],
+                ], $items),
+            ];
+        }
+        return $pedidos;
+    }
+
+    // -----------------------------------------------------------------------
     // Ayudantes
     // -----------------------------------------------------------------------
 

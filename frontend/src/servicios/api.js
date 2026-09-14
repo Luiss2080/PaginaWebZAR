@@ -211,3 +211,11 @@ export function registrarApi(datos) {
 export function cerrarSesionApi() {
   return pedirJsonMetodo('/api/cuenta/logout', 'POST', {});
 }
+
+export function crearPedido(datos) {
+  return pedirJsonMetodo('/api/pedidos/crear', 'POST', datos);
+}
+
+export function obtenerPedidos() {
+  return pedirJson('/api/pedidos');
+}
