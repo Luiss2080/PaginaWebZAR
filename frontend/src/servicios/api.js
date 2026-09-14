@@ -1,7 +1,7 @@
 import {
   categorias as categoriasLocales,
   productos as productosLocales,
-} from '../datos/catalogo';
+} from '../datos/catalogo.js';
 
 const API_ACTIVA = import.meta.env?.VITE_API_BASE !== undefined;
 const BASE = (import.meta.env?.VITE_API_BASE || '').replace(/\/$/, '');

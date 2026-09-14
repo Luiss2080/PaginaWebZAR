@@ -30,6 +30,6 @@ El repositorio también contiene una aplicación heredada en **PHP 8 MVC puro** 
 - No tocar `config/database.php` ni `config/app.php` (credenciales).
 
 ## Al terminar cualquier tarea
-- Ejecutar `npm run lint` y `npm run build` en `frontend/` y dejarlos en verde.
+- Ejecutar `npm run lint`, `npm test` y `npm run build` en `frontend/` y dejarlos en verde.
 - Verificar manualmente el flujo afectado en `npm run dev`.
 - Actualizar el checkbox de la tarea en `specs/001-tienda-moda-zara/tasks.md`.
