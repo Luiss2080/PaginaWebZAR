@@ -6,9 +6,21 @@ import {
 const BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
 
 let respaldoActivo = false;
+const oyentesRespaldo = new Set();
 
 export function estaUsandoRespaldo() {
   return respaldoActivo;
+}
+
+export function suscribirRespaldo(callback) {
+  oyentesRespaldo.add(callback);
+  return () => oyentesRespaldo.delete(callback);
+}
+
+function activarRespaldo() {
+  if (respaldoActivo) return;
+  respaldoActivo = true;
+  oyentesRespaldo.forEach((callback) => callback());
 }
 
 async function pedirJson(ruta) {
@@ -80,7 +92,7 @@ async function cargarProductos() {
       respaldoActivo = false;
       return datos.map(normalizarProducto);
     } catch {
-      respaldoActivo = true;
+      activarRespaldo();
     }
   }
   return productosLocales;
@@ -101,7 +113,7 @@ export async function obtenerCategorias() {
     try {
       return await pedirJson('/api/categorias');
     } catch {
-      respaldoActivo = true;
+      activarRespaldo();
     }
   }
   return categoriasLocales;
@@ -112,7 +124,7 @@ export async function obtenerMarcas() {
     try {
       return await pedirJson('/api/marcas');
     } catch {
-      respaldoActivo = true;
+      activarRespaldo();
     }
   }
   return [];

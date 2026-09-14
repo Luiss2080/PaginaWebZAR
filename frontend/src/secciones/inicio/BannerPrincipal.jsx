@@ -1,196 +1,30 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Target, ShieldCheck, TrendingUp } from 'lucide-react';
-import { motion } from 'framer-motion';
 
-export default function HeroBanner() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
-  };
+const imagenHero =
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=80';
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 80, damping: 20 } }
-  };
-
-  // Texto circular para SVG
-  const circularText = "ORIGINAL HYPE SNEAKERS • EXCLUSIVE DROPS • ";
-
+export default function BannerPrincipal() {
   return (
-    <div className="relative bg-[#050505] text-white overflow-hidden min-h-[600px] lg:h-[calc(100vh-120px)] lg:min-h-[700px] flex items-center w-full">
-      
-      {/* Fondo y Efectos Dinámicos */}
-      <div className="absolute inset-0 bg-noise opacity-70 pointer-events-none z-0"></div>
-      
-      {/* Luces y brillos animados */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-20 w-[300px] h-[300px] bg-red-600/30 rounded-full blur-[100px] pointer-events-none z-0"
+    <section className="relative h-[78vh] min-h-[520px] w-full overflow-hidden bg-gris">
+      <img
+        src={imagenHero}
+        alt="Modelo con prendas de la nueva colección"
+        className="absolute inset-0 h-full w-full object-cover"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-red-800/20 rounded-full blur-[120px] pointer-events-none z-0"
-      />
-      <div className="absolute top-10 right-20 w-[200px] h-[200px] bg-white/5 rounded-full blur-[80px] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-tinta/25" />
 
-      {/* Ticker Inferior (Marquesina de texto animada) */}
-      <div className="absolute bottom-0 w-full overflow-hidden bg-[#E63946] py-2 z-40 border-t border-b border-black">
-        <motion.div 
-          animate={{ x: [0, -1000] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="flex whitespace-nowrap items-center font-display text-black text-xl tracking-widest font-black uppercase"
+      <div className="contenedor relative flex h-full flex-col items-start justify-end pb-16 text-blanco sm:pb-24">
+        <p className="etiqueta">Nueva colección</p>
+        <h1 className="mt-4 max-w-2xl font-titulo text-4xl leading-tight sm:text-5xl lg:text-6xl">
+          El guardarropa esencial de la temporada
+        </h1>
+        <Link
+          to="/catalogo"
+          className="mt-8 bg-blanco px-8 py-3 text-[11px] uppercase tracking-[0.22em] text-tinta transition-colors hover:bg-tinta hover:text-blanco"
         >
-          {Array(10).fill("• EXCLUSIVE DROPS • HYPE SNEAKERS • LIMITED EDITION • STREETWEAR ").map((text, i) => (
-            <span key={i} className="mx-4">{text}</span>
-          ))}
-        </motion.div>
+          Ver la colección
+        </Link>
       </div>
-
-      {/* Contenedor Principal */}
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="w-full h-full px-6 md:px-12 lg:px-20 xl:px-28 relative z-30 flex flex-col lg:flex-row items-center justify-between pb-16"
-      >
-        
-        {/* TEXTO IZQUIERDO: Exactamente 50% */}
-        <div className="w-full lg:w-1/2 relative z-40 text-left flex flex-col items-start pt-10 lg:pt-0 pr-0 lg:pr-10">
-          
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-[#111111] border border-white/20 px-4 py-1.5 mb-6 font-body text-xs font-bold tracking-widest text-white shadow-lg rounded-full">
-            <Zap size={14} className="text-[#E63946] fill-[#E63946] animate-pulse" />
-            <span>NUEVA COLECCIÓN:</span> <span className="text-[#E63946]">STREET HEAT</span>
-          </motion.div>
-
-          <div className="relative inline-block mb-4 md:mb-6 w-full">
-            <motion.h1 variants={itemVariants} className="font-display font-black text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] uppercase tracking-tighter text-white">
-              <span className="block drop-shadow-md">ROMPÉ LAS</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">REGLAS</span>
-            </motion.h1>
-            
-            <motion.span 
-              initial={{ scale: 0, rotate: -45, opacity: 0 }}
-              animate={{ scale: 1, rotate: -15, opacity: 1 }}
-              transition={{ delay: 0.8, type: "spring", stiffness: 200, damping: 10 }}
-              className="absolute top-[35%] right-0 font-marker text-[#E63946] text-3xl sm:text-4xl md:text-5xl drop-shadow-[0_5px_5px_rgba(230,57,70,0.5)] z-50 pointer-events-none"
-            >
-              Y pisa fuerte
-            </motion.span>
-          </div>
-          
-          <motion.p variants={itemVariants} className="text-gray-300 text-lg md:text-xl font-medium max-w-2xl mb-10 leading-relaxed font-body border-l-4 border-[#E63946] pl-5">
-            Descubre nuestra colección exclusiva de sneakers limitados para verdaderos coleccionistas. Diseños que marcan tendencia en la cultura urbana global. Si es <span className="text-white font-bold">HYPE</span> y acaba de salir, ten por seguro que lo tenemos nosotros primero. Calidad premium garantizada y 100% Originales.
-          </motion.p>
-          
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 w-full">
-            <Link to="/catalogo" className="group bg-[#E63946] text-white font-display text-lg uppercase tracking-widest py-3 px-8 transition-all duration-300 hover:bg-white hover:text-black shadow-[0_0_15px_rgba(230,57,70,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] flex items-center justify-center gap-3 w-full sm:w-auto">
-              EXPLORAR DROPS
-              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-300" />
-            </Link>
-            <Link to="/marcas/adidas" className="group bg-transparent border-2 border-white/30 text-white font-display text-lg uppercase tracking-widest py-3 px-8 transition-all duration-300 hover:border-white hover:bg-white/5 flex items-center justify-center gap-3 w-full sm:w-auto">
-              VER COLECCIÓN ADIDAS
-            </Link>
-          </motion.div>
-
-          {/* Social Links con iconos completos SVG más grandes */}
-          <motion.div variants={itemVariants} className="flex gap-6 mt-12 items-center flex-wrap">
-            <span className="text-gray-500 text-sm font-display tracking-widest mr-2">SÍGUENOS:</span>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 11.5c1.5-1 3.5-1.5 5.5-1.5s4 .5 5.5 1.5"></path><path d="M8 15c1.5-1 3.5-1.5 5.5-1.5s4 .5 5.5 1.5"></path></svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-[#E63946] hover:-translate-y-1 transition-all">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
-            </a>
-          </motion.div>
-        </div>
-
-        {/* ZAPATILLA GIGANTE DERECHA: Exactamente 50% */}
-        <motion.div 
-          initial={{ opacity: 0, x: 100, scale: 0.9 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="w-full lg:w-1/2 mt-12 lg:mt-0 relative z-30 flex justify-center lg:justify-end items-center h-[400px] lg:h-full"
-        >
-          {/* Fondo negro puro detrás de la imagen para garantizar que el mix-blend-screen funcione perfectamente sin importar los destellos rojos del fondo global */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-black rounded-full blur-[80px] z-20 pointer-events-none"></div>
-
-          {/* Texto Circular Animado SVG */}
-          <div className="absolute top-10 right-[30%] w-32 h-32 animate-spin-slow opacity-30 z-10 pointer-events-none hidden lg:block" style={{ animationDuration: '15s' }}>
-            <svg viewBox="0 0 100 100" width="100" height="100">
-              <defs>
-                <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
-              </defs>
-              <text fontSize="10.5" fontWeight="bold" fill="white" letterSpacing="2">
-                <textPath href="#circle">
-                  {circularText}
-                </textPath>
-              </text>
-            </svg>
-          </div>
-
-          {/* Zapatilla Adidas Transparente Flotante */}
-          <motion.div 
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative z-30 w-[90%] md:w-[80%] lg:w-[100%] max-w-[650px] pointer-events-none flex justify-center"
-          >
-            {/* Zapatilla Adidas de Unsplash con fondo oscuro -> mix-blend-screen la hace transparente */}
-            <img 
-              src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?auto=format&fit=crop&w=1200&q=80" 
-              alt="Adidas Sneaker Hype" 
-              className="w-full h-auto object-contain mix-blend-screen drop-shadow-[0_20px_30px_rgba(230,57,70,0.3)] scale-110"
-              style={{ filter: 'contrast(1.3) brightness(1.2)' }}
-            />
-          </motion.div>
-
-          {/* Tarjeta Flotante de Estadísticas (Abajo a la izquierda de la zapatilla) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, type: "spring" }}
-            className="absolute bottom-10 left-10 lg:left-0 z-40 bg-[#111111]/90 backdrop-blur-md border border-white/10 p-4 flex items-center gap-4 shadow-xl rounded-lg hidden sm:flex"
-          >
-            <div className="bg-[#E63946]/20 p-2 rounded-full">
-              <ShieldCheck size={24} className="text-[#E63946]" />
-            </div>
-            <div>
-              <p className="font-display font-bold text-white tracking-widest">100% ORIGINALES</p>
-              <p className="text-xs text-gray-400 font-body">Verificados por expertos</p>
-            </div>
-          </motion.div>
-
-          {/* Tarjeta Flotante de Estadísticas (Arriba a la derecha) */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.4, type: "spring" }}
-            className="absolute top-20 right-0 lg:right-10 z-40 bg-white text-black p-3 flex items-center gap-3 shadow-[0_10px_30px_rgba(230,57,70,0.3)] hidden md:flex"
-          >
-            <TrendingUp size={20} className="text-[#E63946]" />
-            <div>
-              <p className="font-display font-black tracking-widest leading-none">+10K VENDIDOS</p>
-            </div>
-          </motion.div>
-
-        </motion.div>
-      </motion.div>
-    </div>
-  )
+    </section>
+  );
 }

@@ -1,229 +1,182 @@
-import { Search, User, ShoppingCart, ChevronDown, Menu, LogOut, Heart, Package as PackageIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Link, NavLink } from 'react-router-dom';
+import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
+import { useCategorias } from '../../servicios/hooks';
+import { useBusqueda, useCarrito, useCuenta, useFavoritos } from '../../contextos/contextos';
 
-export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+export default function Header() {
+  const categorias = useCategorias();
+  const { abrir: abrirBusqueda } = useBusqueda();
+  const { totalUnidades, abrir: abrirCarrito } = useCarrito();
+  const { total: totalFavoritos } = useFavoritos();
+  const { usuario, cerrarSesion } = useCuenta();
 
-  const navLinks = [
-    { name: 'NUEVOS', path: '/nuevos' },
-    { 
-      name: 'JORDAN', 
-      path: '/jordan', 
-      hasDropdown: true,
-      subcategories: [
-        { name: 'Air Jordan 1 High', path: '/jordan/1-high' },
-        { name: 'Air Jordan 1 Low', path: '/jordan/1-low' },
-        { name: 'Air Jordan 4', path: '/jordan/4' },
-        { name: 'Collabs Exclusivas', path: '/jordan/collabs' },
-      ]
-    },
-    { 
-      name: 'NIKE', 
-      path: '/nike', 
-      hasDropdown: true,
-      subcategories: [
-        { name: 'Nike SB Dunk', path: '/nike/sb' },
-        { name: 'Air Force 1', path: '/nike/af1' },
-        { name: 'Air Max', path: '/nike/airmax' },
-        { name: 'Off-White x Nike', path: '/nike/off-white' },
-      ]
-    },
-    { 
-      name: 'ADIDAS', 
-      path: '/adidas', 
-      hasDropdown: true,
-      subcategories: [
-        { name: 'Yeezy Boost', path: '/adidas/yeezy' },
-        { name: 'Samba & Gazelle', path: '/adidas/classics' },
-        { name: 'Ultraboost', path: '/adidas/ultraboost' },
-        { name: 'Bad Bunny Collabs', path: '/adidas/bad-bunny' },
-      ]
-    },
-    { name: 'OFERTAS', path: '/ofertas', isRed: true },
-  ];
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const [cuentaAbierta, setCuentaAbierta] = useState(false);
+
+  const cerrarTodo = () => {
+    setMenuAbierto(false);
+    setCuentaAbierta(false);
+  };
 
   return (
-    <nav className="bg-[#050505] sticky top-0 z-50 border-b border-white/10 shadow-2xl font-display relative">
-      <div className="container mx-auto px-4 max-w-7xl py-5 flex items-center justify-between">
-        
-        {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden text-white p-2 -ml-2 hover:text-[#E63946] transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    <header className="sticky top-0 z-50 border-b border-borde bg-blanco">
+      <div className="contenedor flex h-16 items-center gap-6">
+        <button
+          type="button"
+          className="lg:hidden"
+          aria-label="Abrir menú"
+          aria-expanded={menuAbierto}
+          onClick={() => setMenuAbierto((valor) => !valor)}
         >
-          <Menu size={28} strokeWidth={2.5} />
+          {menuAbierto ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {/* Logo */}
-        <Link to="/" className="text-4xl md:text-5xl font-black tracking-tighter italic lg:mr-8 text-white z-50 flex items-center">
-          ZAR<span className="text-[#E63946]">KICKS</span>
+        <Link
+          to="/"
+          onClick={cerrarTodo}
+          className="font-titulo text-3xl font-semibold tracking-[0.28em]"
+        >
+          ZARA
         </Link>
 
-        {/* Center Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 font-bold text-xl tracking-wider">
-          {navLinks.map((link, i) => (
-            <div 
-              key={i} 
-              className="relative group h-full py-2"
-              onMouseEnter={() => setActiveDropdown(link.name)}
-              onMouseLeave={() => setActiveDropdown(null)}
+        <nav aria-label="Categorías" className="hidden flex-1 justify-center gap-8 lg:flex">
+          <NavLink to="/catalogo" className="etiqueta transition-opacity hover:opacity-60">
+            Nuevos
+          </NavLink>
+          {categorias.map((categoria) => (
+            <NavLink
+              key={categoria.slug}
+              to={`/catalogo?categoria=${categoria.slug}`}
+              className="etiqueta transition-opacity hover:opacity-60"
             >
-              <Link 
-                to={link.path}
-                className={`flex items-center gap-1 hover:text-[#E63946] hover:-translate-y-0.5 transition-all duration-300 ${link.isRed ? 'text-[#E63946]' : 'text-gray-200'}`}
-              >
-                {link.name}
-                {link.hasDropdown && <ChevronDown size={18} strokeWidth={3} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180 text-[#E63946]' : 'text-gray-500'}`} />}
-              </Link>
-
-              {/* Mega-Menú Dropdown */}
-              {link.hasDropdown && (
-                <AnimatePresence>
-                  {activeDropdown === link.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-[#111111] border border-white/10 shadow-2xl z-50"
-                    >
-                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#111111] border-t border-l border-white/10 rotate-45"></div>
-                      <div className="flex flex-col py-3 relative z-10">
-                        {link.subcategories.map((sub, j) => (
-                          <Link 
-                            key={j} 
-                            to={sub.path}
-                            className="px-6 py-3 text-gray-300 hover:text-white hover:bg-[#E63946] transition-colors flex items-center gap-2 font-display tracking-widest text-lg"
-                          >
-                            <ArrowRightMicro />
-                            {sub.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              )}
-            </div>
+              {categoria.nombre}
+            </NavLink>
           ))}
-        </div>
+        </nav>
 
-        {/* Right Icons */}
-        <div className="flex items-center gap-4 sm:gap-6 text-white z-50">
-          <button className="hover:text-[#E63946] transition-colors p-1">
-            <Search size={24} strokeWidth={2.5} />
-          </button>
-          
-          {/* User Dropdown */}
-          <div 
-            className="relative group hidden sm:block h-full py-2"
-            onMouseEnter={() => setActiveDropdown('user')}
-            onMouseLeave={() => setActiveDropdown(null)}
+        <div className="ml-auto flex items-center gap-5 lg:ml-0">
+          <button
+            type="button"
+            aria-label="Buscar"
+            onClick={abrirBusqueda}
+            className="p-1 transition-opacity hover:opacity-60"
           >
-            <button className="hover:text-[#E63946] transition-colors p-1 flex items-center gap-1">
-              <User size={24} strokeWidth={2.5} />
+            <Search size={20} strokeWidth={1.5} />
+          </button>
+
+          <Link
+            to="/favoritos"
+            aria-label={`Favoritos (${totalFavoritos})`}
+            className="relative hidden p-1 transition-opacity hover:opacity-60 sm:block"
+          >
+            <Heart size={20} strokeWidth={1.5} />
+            {totalFavoritos > 0 && <Contador valor={totalFavoritos} />}
+          </Link>
+
+          <div className="relative hidden sm:block">
+            <button
+              type="button"
+              aria-label="Cuenta"
+              aria-expanded={cuentaAbierta}
+              onClick={() => setCuentaAbierta((valor) => !valor)}
+              className="p-1 transition-opacity hover:opacity-60"
+            >
+              <User size={20} strokeWidth={1.5} />
             </button>
-            
-            <AnimatePresence>
-              {activeDropdown === 'user' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full right-0 mt-4 w-56 bg-[#111111] border border-white/10 shadow-2xl z-50"
-                >
-                  <div className="absolute -top-2 right-4 w-4 h-4 bg-[#111111] border-t border-l border-white/10 rotate-45"></div>
-                  <div className="flex flex-col py-2 relative z-10 font-body text-sm font-semibold">
-                    <Link to="/perfil" className="px-5 py-3 text-gray-300 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-3">
-                      <User size={18} /> Mi Perfil
+
+            {cuentaAbierta && (
+              <div className="absolute right-0 top-full mt-3 w-56 border border-borde bg-blanco py-2 shadow-sm">
+                {usuario ? (
+                  <>
+                    <p className="px-4 py-2 text-sm font-medium">{usuario.nombre}</p>
+                    <Link
+                      to="/favoritos"
+                      onClick={cerrarTodo}
+                      className="block px-4 py-2 text-sm text-gris-medio transition-colors hover:text-tinta"
+                    >
+                      Mis favoritos
                     </Link>
-                    <Link to="/pedidos" className="px-5 py-3 text-gray-300 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-3">
-                      <PackageIcon size={18} /> Mis Pedidos
-                    </Link>
-                    <Link to="/favoritos" className="px-5 py-3 text-gray-300 hover:text-[#E63946] hover:bg-white/10 transition-colors flex items-center gap-3">
-                      <Heart size={18} /> Lista de Deseos
-                    </Link>
-                    <div className="border-t border-white/10 my-1"></div>
-                    <button className="px-5 py-3 text-gray-500 hover:text-white hover:bg-red-900/50 transition-colors flex items-center gap-3 w-full text-left">
-                      <LogOut size={18} /> Cerrar Sesión
+                    <button
+                      type="button"
+                      onClick={() => {
+                        cerrarSesion();
+                        cerrarTodo();
+                      }}
+                      className="block w-full px-4 py-2 text-left text-sm text-gris-medio transition-colors hover:text-tinta"
+                    >
+                      Cerrar sesión
                     </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={cerrarTodo}
+                      className="block px-4 py-2 text-sm transition-colors hover:text-gris-medio"
+                    >
+                      Iniciar sesión
+                    </Link>
+                    <Link
+                      to="/registro"
+                      onClick={cerrarTodo}
+                      className="block px-4 py-2 text-sm transition-colors hover:text-gris-medio"
+                    >
+                      Crear cuenta
+                    </Link>
+                  </>
+                )}
+              </div>
+            )}
           </div>
 
-          {/* Cart */}
-          <button className="group hover:text-[#E63946] transition-colors relative flex items-center p-1">
-            <ShoppingCart size={24} strokeWidth={2.5} />
-            <span className="absolute -top-1 -right-2 bg-[#E63946] text-white text-[12px] font-bold font-body w-[20px] h-[20px] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              3
-            </span>
+          <button
+            type="button"
+            aria-label={`Carrito (${totalUnidades})`}
+            onClick={abrirCarrito}
+            className="relative p-1 transition-opacity hover:opacity-60"
+          >
+            <ShoppingBag size={20} strokeWidth={1.5} />
+            {totalUnidades > 0 && <Contador valor={totalUnidades} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden bg-[#0a0a0a] border-b border-white/10 shadow-xl flex flex-col font-bold text-xl"
-          >
-            {navLinks.map((link, i) => (
-              <div key={i}>
-                <Link 
-                  to={link.path}
-                  className={`px-6 py-5 border-b border-white/5 flex items-center justify-between hover:bg-white/5 ${link.isRed ? 'text-[#E63946]' : 'text-white'}`}
-                  onClick={() => !link.hasDropdown && setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown size={20} strokeWidth={3} className="text-gray-500" />}
-                </Link>
-                {/* Mobile Subcategories (simulated open for display) */}
-                {link.hasDropdown && (
-                  <div className="bg-[#111111] flex flex-col">
-                    {link.subcategories.map((sub, j) => (
-                      <Link 
-                        key={j} 
-                        to={sub.path}
-                        className="px-10 py-3 text-gray-400 hover:text-white text-lg font-display tracking-wider border-b border-white/5 flex items-center gap-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <ArrowRightMicro /> {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+      {menuAbierto && (
+        <nav aria-label="Menú móvil" className="border-t border-borde bg-blanco lg:hidden">
+          <div className="contenedor flex flex-col py-2">
+            <Link to="/catalogo" onClick={cerrarTodo} className="border-b border-borde py-4 etiqueta">
+              Nuevos
+            </Link>
+            {categorias.map((categoria) => (
+              <Link
+                key={categoria.slug}
+                to={`/catalogo?categoria=${categoria.slug}`}
+                onClick={cerrarTodo}
+                className="border-b border-borde py-4 etiqueta"
+              >
+                {categoria.nombre}
+              </Link>
             ))}
-            
-            {/* Mobile User Options */}
-            <div className="p-6 bg-[#111111] grid grid-cols-2 gap-4">
-              <Link to="/perfil" className="flex items-center gap-2 text-gray-300 font-body text-sm font-semibold" onClick={() => setMobileMenuOpen(false)}><User size={16}/> Mi Perfil</Link>
-              <Link to="/pedidos" className="flex items-center gap-2 text-gray-300 font-body text-sm font-semibold" onClick={() => setMobileMenuOpen(false)}><PackageIcon size={16}/> Pedidos</Link>
-              <Link to="/favoritos" className="flex items-center gap-2 text-[#E63946] font-body text-sm font-semibold" onClick={() => setMobileMenuOpen(false)}><Heart size={16}/> Deseos</Link>
-              <button className="flex items-center gap-2 text-gray-500 font-body text-sm font-semibold" onClick={() => setMobileMenuOpen(false)}><LogOut size={16}/> Salir</button>
+            <div className="flex gap-6 py-4">
+              <Link to="/favoritos" onClick={cerrarTodo} className="etiqueta">
+                Favoritos ({totalFavoritos})
+              </Link>
+              <Link to={usuario ? '/favoritos' : '/login'} onClick={cerrarTodo} className="etiqueta">
+                {usuario ? usuario.nombre : 'Iniciar sesión'}
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  )
+          </div>
+        </nav>
+      )}
+    </header>
+  );
 }
 
-// Micro Icon Component for Mega-Menu list items
-function ArrowRightMicro() {
+function Contador({ valor }) {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-[#E63946]">
-      <path d="M5 12h14"></path>
-      <path d="M12 5l7 7-7 7"></path>
-    </svg>
-  )
+    <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-tinta px-1 text-[10px] font-medium text-blanco">
+      {valor}
+    </span>
+  );
 }
