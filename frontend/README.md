@@ -8,7 +8,8 @@ npm install      # instalar dependencias
 npm run dev      # servidor de desarrollo en http://localhost:5173
 npm run build    # build de producción
 npm run lint     # oxlint
-npm test         # tests (runner integrado de Node, node --test)
+npm test         # tests unitarios (runner integrado de Node, node --test)
+npm run test:api # pruebas de integración de la API PHP (arranca el server y limpia)
 ```
 
 ## Datos (dos modos)
