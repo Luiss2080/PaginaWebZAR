@@ -64,10 +64,14 @@ function ordenar(lista, orden) {
 }
 
 export function filtrarProductos(lista, filtros = {}) {
-  const { categoria, tallas = [], colores = [], precioMin, precioMax, orden } = filtros;
+  const { categoria, marcas = [], tallas = [], colores = [], precioMin, precioMax, orden } =
+    filtros;
   let resultado = lista;
 
   if (categoria) resultado = resultado.filter((p) => p.categoria === categoria);
+  if (marcas.length) {
+    resultado = resultado.filter((p) => marcas.includes(p.marca));
+  }
   if (tallas.length) {
     resultado = resultado.filter((p) => p.tallas.some((talla) => tallas.includes(talla)));
   }

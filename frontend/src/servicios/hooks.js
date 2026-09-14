@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { obtenerCategorias, obtenerProducto, obtenerProductos } from './api';
+import { obtenerCategorias, obtenerMarcas, obtenerProducto, obtenerProductos } from './api';
 
 export function useProductos(filtros = {}) {
   const clave = JSON.stringify(filtros);
@@ -50,4 +50,20 @@ export function useCategorias() {
   }, []);
 
   return categorias;
+}
+
+export function useMarcas() {
+  const [marcas, setMarcas] = useState([]);
+
+  useEffect(() => {
+    let activo = true;
+    obtenerMarcas().then((datos) => {
+      if (activo) setMarcas(datos);
+    });
+    return () => {
+      activo = false;
+    };
+  }, []);
+
+  return marcas;
 }
