@@ -97,14 +97,9 @@ export default function DrawerCarrito() {
               <p className="mt-1 text-xs text-gris-medio">
                 Gastos de envío calculados en el siguiente paso.
               </p>
-              <button
-                type="button"
-                disabled
-                title="El pago no está disponible en esta demo"
-                className="boton-primario mt-5 w-full disabled:cursor-not-allowed disabled:opacity-50"
-              >
+              <Link to="/checkout" onClick={cerrar} className="boton-primario mt-5 w-full">
                 Tramitar pedido
-              </button>
+              </Link>
               <button
                 type="button"
                 onClick={vaciar}

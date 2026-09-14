@@ -97,6 +97,13 @@ export default function Header() {
                     >
                       Mis favoritos
                     </Link>
+                    <Link
+                      to="/pedidos"
+                      onClick={cerrarTodo}
+                      className="block px-4 py-2 text-sm text-gris-medio transition-colors hover:text-tinta"
+                    >
+                      Mis pedidos
+                    </Link>
                     <button
                       type="button"
                       onClick={() => {
@@ -158,10 +165,15 @@ export default function Header() {
                 {categoria.nombre}
               </Link>
             ))}
-            <div className="flex gap-6 py-4">
+            <div className="flex flex-wrap gap-6 py-4">
               <Link to="/favoritos" onClick={cerrarTodo} className="etiqueta">
                 Favoritos ({totalFavoritos})
               </Link>
+              {usuario && (
+                <Link to="/pedidos" onClick={cerrarTodo} className="etiqueta">
+                  Mis pedidos
+                </Link>
+              )}
               <Link to={usuario ? '/favoritos' : '/login'} onClick={cerrarTodo} className="etiqueta">
                 {usuario ? usuario.nombre : 'Iniciar sesión'}
               </Link>
