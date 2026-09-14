@@ -8,6 +8,7 @@ npm install      # instalar dependencias
 npm run dev      # servidor de desarrollo en http://localhost:5173
 npm run build    # build de producción
 npm run lint     # oxlint
+npm test         # tests (runner integrado de Node, node --test)
 ```
 
 ## Datos (dos modos)
