@@ -3,37 +3,37 @@ import { obtenerCategorias, obtenerProducto, obtenerProductos } from './api';
 
 export function useProductos(filtros = {}) {
   const clave = JSON.stringify(filtros);
-  const [estado, setEstado] = useState({ productos: [], cargando: true });
+  const [resultado, setResultado] = useState({ clave: null, productos: [] });
 
   useEffect(() => {
     let activo = true;
-    setEstado((previo) => ({ ...previo, cargando: true }));
     obtenerProductos(JSON.parse(clave)).then((productos) => {
-      if (activo) setEstado({ productos, cargando: false });
+      if (activo) setResultado({ clave, productos });
     });
     return () => {
       activo = false;
     };
   }, [clave]);
 
-  return estado;
+  const cargando = resultado.clave !== clave;
+  return { productos: cargando ? [] : resultado.productos, cargando };
 }
 
 export function useProducto(id) {
-  const [estado, setEstado] = useState({ producto: null, cargando: true });
+  const [resultado, setResultado] = useState({ id: null, producto: null });
 
   useEffect(() => {
     let activo = true;
-    setEstado({ producto: null, cargando: true });
     obtenerProducto(id).then((producto) => {
-      if (activo) setEstado({ producto, cargando: false });
+      if (activo) setResultado({ id, producto });
     });
     return () => {
       activo = false;
     };
   }, [id]);
 
-  return estado;
+  const cargando = resultado.id !== id;
+  return { producto: cargando ? null : resultado.producto, cargando };
 }
 
 export function useCategorias() {

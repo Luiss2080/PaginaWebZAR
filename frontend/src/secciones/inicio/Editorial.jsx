@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const imagenEditorial =
-  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80';
+  'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1400&q=80';
 
 export default function Editorial() {
   return (

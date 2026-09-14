@@ -1,0 +1,206 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: Envíos gratis a partir de 30 €
+    - generic [ref=e7]: Devoluciones gratuitas en 30 días
+  - banner [ref=e8]:
+    - generic [ref=e9]:
+      - link "ZARA" [ref=e10] [cursor=pointer]:
+        - /url: /
+      - navigation "Categorías" [ref=e11]:
+        - link "Nuevos" [ref=e12] [cursor=pointer]:
+          - /url: /catalogo
+        - link "Mujer" [ref=e13] [cursor=pointer]:
+          - /url: /catalogo?categoria=mujer
+        - link "Hombre" [ref=e14] [cursor=pointer]:
+          - /url: /catalogo?categoria=hombre
+        - link "Niños" [ref=e15] [cursor=pointer]:
+          - /url: /catalogo?categoria=ninos
+        - link "Accesorios" [ref=e16] [cursor=pointer]:
+          - /url: /catalogo?categoria=accesorios
+      - generic [ref=e17]:
+        - button "Buscar" [ref=e18]
+        - link "Favoritos (0)" [ref=e22] [cursor=pointer]:
+          - /url: /favoritos
+        - button "Cuenta" [ref=e26]
+        - button "Carrito (0)" [ref=e30]
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - img "Modelo con prendas de la nueva colección" [ref=e36]
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Nueva colección
+        - heading "El guardarropa esencial de la temporada" [level=1] [ref=e40]
+        - link "Ver la colección" [ref=e41] [cursor=pointer]:
+          - /url: /catalogo
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Comprar por
+          - heading "Categorías" [level=2] [ref=e47]
+        - link "Ver todo" [ref=e48] [cursor=pointer]:
+          - /url: /catalogo
+      - generic [ref=e49]:
+        - link [ref=e50] [cursor=pointer]:
+          - /url: /catalogo?categoria=mujer
+          - img "Mujer" [ref=e52]
+          - heading "Mujer" [level=3] [ref=e53]
+        - link [ref=e54] [cursor=pointer]:
+          - /url: /catalogo?categoria=hombre
+          - img "Hombre" [ref=e56]
+          - heading "Hombre" [level=3] [ref=e57]
+        - link [ref=e58] [cursor=pointer]:
+          - /url: /catalogo?categoria=ninos
+          - img "Niños" [ref=e60]
+          - heading "Niños" [level=3] [ref=e61]
+        - link [ref=e62] [cursor=pointer]:
+          - /url: /catalogo?categoria=accesorios
+          - img "Accesorios" [ref=e64]
+          - heading "Accesorios" [level=3] [ref=e65]
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Selección
+          - heading "Destacados" [level=2] [ref=e71]
+        - link "Ver todo" [ref=e72] [cursor=pointer]:
+          - /url: /catalogo
+      - generic [ref=e74]:
+        - link "Vestido midi plisado Nuevo -17% Añadir a favoritos Vestido midi plisado 49,95 €59,95 €" [ref=e75] [cursor=pointer]:
+          - /url: /producto/1
+          - generic [ref=e76]:
+            - img "Vestido midi plisado" [ref=e77]
+            - generic [ref=e79]:
+              - generic [ref=e80]: Nuevo
+              - generic [ref=e81]: "-17%"
+            - button "Añadir a favoritos" [ref=e82]
+          - generic [ref=e85]:
+            - heading "Vestido midi plisado" [level=3] [ref=e86]
+            - paragraph [ref=e87]: 49,95 €59,95 €
+        - link [ref=e88] [cursor=pointer]:
+          - /url: /producto/2
+          - generic [ref=e89]:
+            - img "Blazer oversize" [ref=e90]
+            - button "Añadir a favoritos" [ref=e92]
+          - generic [ref=e95]:
+            - heading "Blazer oversize" [level=3] [ref=e96]
+            - paragraph [ref=e97]: 69,95 €
+        - link "Camisa de popelín -17% Añadir a favoritos Camisa de popelín 29,95 €35,95 €" [ref=e98] [cursor=pointer]:
+          - /url: /producto/3
+          - generic [ref=e99]:
+            - img "Camisa de popelín" [ref=e100]
+            - generic [ref=e102]: "-17%"
+            - button "Añadir a favoritos" [ref=e104]
+          - generic [ref=e107]:
+            - heading "Camisa de popelín" [level=3] [ref=e108]
+            - paragraph [ref=e109]: 29,95 €35,95 €
+        - link "Jersey de punto grueso -18% Añadir a favoritos Jersey de punto grueso 45,95 €55,95 €" [ref=e110] [cursor=pointer]:
+          - /url: /producto/6
+          - generic [ref=e111]:
+            - img "Jersey de punto grueso" [ref=e112]
+            - generic [ref=e114]: "-18%"
+            - button "Añadir a favoritos" [ref=e116]
+          - generic [ref=e119]:
+            - heading "Jersey de punto grueso" [level=3] [ref=e120]
+            - paragraph [ref=e121]: 45,95 €55,95 €
+        - link "Sudadera con capucha -16% Añadir a favoritos Sudadera con capucha 35,95 €42,95 €" [ref=e122] [cursor=pointer]:
+          - /url: /producto/8
+          - generic [ref=e123]:
+            - img "Sudadera con capucha" [ref=e124]
+            - generic [ref=e126]: "-16%"
+            - button "Añadir a favoritos" [ref=e128]
+          - generic [ref=e131]:
+            - heading "Sudadera con capucha" [level=3] [ref=e132]
+            - paragraph [ref=e133]: 35,95 €42,95 €
+        - link "Chaqueta acolchada infantil Nuevo -20% Añadir a favoritos Chaqueta acolchada infantil 39,95 €49,95 €" [ref=e134] [cursor=pointer]:
+          - /url: /producto/10
+          - generic [ref=e135]:
+            - img "Chaqueta acolchada infantil" [ref=e136]
+            - generic [ref=e138]:
+              - generic [ref=e139]: Nuevo
+              - generic [ref=e140]: "-20%"
+            - button "Añadir a favoritos" [ref=e141]
+          - generic [ref=e144]:
+            - heading "Chaqueta acolchada infantil" [level=3] [ref=e145]
+            - paragraph [ref=e146]: 39,95 €49,95 €
+        - link "Bolso shopper de piel -20% Añadir a favoritos Bolso shopper de piel 79,95 €99,95 €" [ref=e147] [cursor=pointer]:
+          - /url: /producto/11
+          - generic [ref=e148]:
+            - img "Bolso shopper de piel" [ref=e149]
+            - generic [ref=e151]: "-20%"
+            - button "Añadir a favoritos" [ref=e153]
+          - generic [ref=e156]:
+            - heading "Bolso shopper de piel" [level=3] [ref=e157]
+            - paragraph [ref=e158]: 79,95 €99,95 €
+        - link "Zapatillas retro runner -19% Añadir a favoritos Zapatillas retro runner 64,95 €79,95 €" [ref=e159] [cursor=pointer]:
+          - /url: /producto/14
+          - generic [ref=e160]:
+            - img "Zapatillas retro runner" [ref=e161]
+            - generic [ref=e163]: "-19%"
+            - button "Añadir a favoritos" [ref=e165]
+          - generic [ref=e168]:
+            - heading "Zapatillas retro runner" [level=3] [ref=e169]
+            - paragraph [ref=e170]: 64,95 €79,95 €
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - paragraph [ref=e174]: La campaña
+        - heading "Diseño atemporal, hecho para durar" [level=2] [ref=e175]
+        - paragraph [ref=e176]: Tejidos naturales, patrones depurados y una paleta neutra que combina con todo. Piezas pensadas para acompañarte temporada tras temporada.
+        - link "Descubrir la colección" [ref=e177] [cursor=pointer]:
+          - /url: /catalogo
+      - img "Interior de tienda con la colección expuesta" [ref=e179]
+  - contentinfo [ref=e180]:
+    - generic [ref=e181]:
+      - generic [ref=e182]:
+        - link "ZARA" [ref=e183] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e184]: Colecciones de temporada para mujer, hombre y niños. Diseño atemporal, materiales duraderos y envíos a todo el país.
+        - generic [ref=e185]:
+          - text: Recibe las novedades
+          - generic [ref=e186]:
+            - textbox "Recibe las novedades" [ref=e187]:
+              - /placeholder: tu@correo.com
+            - button "Suscribirme" [ref=e188]
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - heading "Comprar" [level=2] [ref=e191]
+          - list [ref=e192]:
+            - listitem [ref=e193]:
+              - link "Novedades" [ref=e194] [cursor=pointer]:
+                - /url: /catalogo
+            - listitem [ref=e195]:
+              - link "Mujer" [ref=e196] [cursor=pointer]:
+                - /url: /catalogo?categoria=mujer
+            - listitem [ref=e197]:
+              - link "Hombre" [ref=e198] [cursor=pointer]:
+                - /url: /catalogo?categoria=hombre
+            - listitem [ref=e199]:
+              - link "Niños" [ref=e200] [cursor=pointer]:
+                - /url: /catalogo?categoria=ninos
+            - listitem [ref=e201]:
+              - link "Accesorios" [ref=e202] [cursor=pointer]:
+                - /url: /catalogo?categoria=accesorios
+        - generic [ref=e203]:
+          - heading "Ayuda" [level=2] [ref=e204]
+          - list [ref=e205]:
+            - listitem [ref=e206]:
+              - link "Envíos" [ref=e207] [cursor=pointer]:
+                - /url: /pagina/envios
+            - listitem [ref=e208]:
+              - link "Devoluciones" [ref=e209] [cursor=pointer]:
+                - /url: /pagina/devoluciones
+            - listitem [ref=e210]:
+              - link "Guía de tallas" [ref=e211] [cursor=pointer]:
+                - /url: /pagina/tallas
+            - listitem [ref=e212]:
+              - link "Contacto" [ref=e213] [cursor=pointer]:
+                - /url: /pagina/contacto
+        - generic [ref=e214]:
+          - heading "Legal" [level=2] [ref=e215]
+          - list [ref=e216]:
+            - listitem [ref=e217]:
+              - link "Términos" [ref=e218] [cursor=pointer]:
+                - /url: /pagina/terminos
+            - listitem [ref=e219]:
+              - link "Privacidad" [ref=e220] [cursor=pointer]:
+                - /url: /pagina/privacidad
+    - generic [ref=e222]:
+      - paragraph [ref=e223]: © 2026 ZARA. Todos los derechos reservados.
+      - paragraph [ref=e224]: Demo sin pasarela de pago real.
