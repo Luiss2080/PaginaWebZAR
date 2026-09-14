@@ -90,11 +90,14 @@ async function cargarProductos() {
   if (API_ACTIVA) {
     try {
       const datos = await pedirJson('/api/productos');
-      respaldoActivo = false;
-      return datos.map(normalizarProducto);
+      if (datos.length > 0) {
+        respaldoActivo = false;
+        return datos.map(normalizarProducto);
+      }
     } catch {
-      activarRespaldo();
+      /* cae al respaldo */
     }
+    activarRespaldo();
   }
   return productosLocales;
 }
@@ -112,10 +115,12 @@ export async function obtenerProducto(id) {
 export async function obtenerCategorias() {
   if (API_ACTIVA) {
     try {
-      return await pedirJson('/api/categorias');
+      const datos = await pedirJson('/api/categorias');
+      if (datos.length > 0) return datos;
     } catch {
-      activarRespaldo();
+      /* cae al respaldo */
     }
+    activarRespaldo();
   }
   return categoriasLocales;
 }
