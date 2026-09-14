@@ -45,7 +45,18 @@ Métodos: **Navegador** (Playwright, local seed), **API** (modo `VITE_API_BASE` 
 | RF-38 | `/ruta-inexistente` → página 404 | Navegador | Cumple |
 | RF-39 | `/pagina/envios` y resto de estáticas | Navegador | Cumple |
 | RF-40 | Newsletter valida email y confirma | Código | Cumple |
-| RF-41 | Título por página ("Mujer — ZARA", etc.) | Navegador | Cumple |
+| RF-41 | Título y meta descripción por página ("Mujer — ZARA", descripción del producto, etc.) | Navegador | Cumple |
+
+## Requisitos no funcionales
+
+| RNF | Verificación | Resultado |
+|---|---|---|
+| Rendimiento | Build de JS 286 KB (88,6 KB gzip), por debajo del objetivo de 400 KB | Cumple |
+| Responsive | Probado a 390px y 1440px | Cumple |
+| Accesibilidad | `aria-label`/`aria-pressed`, foco visible, cierre con `Escape`, navegación por teclado | Cumple |
+| SEO básico | `lang="es"` + título y `meta[name=description]` por página (`utils/seo.js`) | Cumple |
+| Sin dependencias nuevas | `package.json` sin añadidos fuera del stack de la constitución | Cumple |
+| Sin `console.log` | `git grep` sin coincidencias en `src/` | Cumple |
 
 ## Cierre técnico
 - `npm run lint` → sin avisos.
