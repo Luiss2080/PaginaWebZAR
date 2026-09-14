@@ -3,8 +3,8 @@ import {
   productos as productosLocales,
 } from '../datos/catalogo';
 
-const API_ACTIVA = import.meta.env.VITE_API_BASE !== undefined;
-const BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+const API_ACTIVA = import.meta.env?.VITE_API_BASE !== undefined;
+const BASE = (import.meta.env?.VITE_API_BASE || '').replace(/\/$/, '');
 
 let respaldoActivo = false;
 const oyentesRespaldo = new Set();

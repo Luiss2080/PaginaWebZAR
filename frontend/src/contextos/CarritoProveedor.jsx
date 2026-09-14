@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CarritoContexto } from './contextos';
+import {
+  agregarLinea,
+  calcularTotales,
+  cambiarCantidadLinea,
+  quitarLinea,
+} from './reductores';
 import { guardar, leer } from '../servicios/almacenamiento';
 import {
   agregarCarrito,
@@ -11,36 +17,6 @@ import {
 } from '../servicios/api';
 
 const CLAVE = 'zara-carrito';
-
-const claveLinea = (productoId, talla, color) => `${productoId}::${talla}::${color}`;
-
-function agregarLocal(lineas, producto, { talla, color, cantidad }) {
-  const idLinea = claveLinea(producto.id, talla, color);
-  const existente = lineas.find((linea) => linea.idLinea === idLinea);
-  if (existente) {
-    return lineas.map((linea) =>
-      linea.idLinea === idLinea ? { ...linea, cantidad: linea.cantidad + cantidad } : linea,
-    );
-  }
-  return [
-    ...lineas,
-    {
-      idLinea,
-      productoId: producto.id,
-      nombre: producto.nombre,
-      precio: producto.precio,
-      imagen: producto.imagenes?.[0] ?? '',
-      talla,
-      color,
-      cantidad,
-    },
-  ];
-}
-
-function cambiarLocal(lineas, idLinea, cantidad) {
-  if (cantidad <= 0) return lineas.filter((linea) => linea.idLinea !== idLinea);
-  return lineas.map((linea) => (linea.idLinea === idLinea ? { ...linea, cantidad } : linea));
-}
 
 export default function CarritoProveedor({ children }) {
   const [lineas, setLineas] = useState(() => (apiActiva ? [] : leer(CLAVE, [])));
@@ -74,7 +50,7 @@ export default function CarritoProveedor({ children }) {
         /* sin conexión: se mantiene el estado actual */
       }
     } else {
-      setLineas((previas) => agregarLocal(previas, producto, { talla, color, cantidad }));
+      setLineas((previas) => agregarLinea(previas, producto, { talla, color, cantidad }));
     }
   }, []);
 
@@ -86,7 +62,7 @@ export default function CarritoProveedor({ children }) {
         /* sin conexión */
       }
     } else {
-      setLineas((previas) => cambiarLocal(previas, idLinea, cantidad));
+      setLineas((previas) => cambiarCantidadLinea(previas, idLinea, cantidad));
     }
   }, []);
 
@@ -98,7 +74,7 @@ export default function CarritoProveedor({ children }) {
         /* sin conexión */
       }
     } else {
-      setLineas((previas) => previas.filter((linea) => linea.idLinea !== idLinea));
+      setLineas((previas) => quitarLinea(previas, idLinea));
     }
   }, []);
 
@@ -115,8 +91,7 @@ export default function CarritoProveedor({ children }) {
   }, []);
 
   const valor = useMemo(() => {
-    const totalUnidades = lineas.reduce((total, linea) => total + linea.cantidad, 0);
-    const subtotal = lineas.reduce((total, linea) => total + linea.precio * linea.cantidad, 0);
+    const { totalUnidades, subtotal } = calcularTotales(lineas);
 
     return {
       lineas,

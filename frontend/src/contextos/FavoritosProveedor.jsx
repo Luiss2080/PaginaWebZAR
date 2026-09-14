@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FavoritosContexto } from './contextos';
+import { alternarFavorito as alternarFavoritoPuro } from './reductores';
 import { guardar, leer } from '../servicios/almacenamiento';
 import { alternarFavorito, apiActiva, obtenerFavoritos } from '../servicios/api';
 
@@ -35,11 +36,7 @@ export default function FavoritosProveedor({ children }) {
         /* sin conexión */
       }
     } else {
-      setIds((previos) =>
-        previos.some((guardado) => String(guardado) === String(id))
-          ? previos.filter((guardado) => String(guardado) !== String(id))
-          : [...previos, id],
-      );
+      setIds((previos) => alternarFavoritoPuro(previos, id));
     }
   }, []);
 
