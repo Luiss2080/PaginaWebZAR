@@ -1,38 +1,57 @@
-import { useEffect, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FavoritosContexto } from './contextos';
 import { guardar, leer } from '../servicios/almacenamiento';
+import { alternarFavorito, apiActiva, obtenerFavoritos } from '../servicios/api';
 
 const CLAVE = 'zara-favoritos';
 
-function reductor(estado, accion) {
-  switch (accion.type) {
-    case 'alternar':
-      return estado.includes(accion.id)
-        ? estado.filter((id) => id !== accion.id)
-        : [...estado, accion.id];
-    case 'limpiar':
-      return [];
-    default:
-      return estado;
-  }
-}
-
 export default function FavoritosProveedor({ children }) {
-  const [ids, despachar] = useReducer(reductor, [], () => leer(CLAVE, []));
+  const [ids, setIds] = useState(() => (apiActiva ? [] : leer(CLAVE, [])));
 
   useEffect(() => {
+    if (apiActiva) return undefined;
     guardar(CLAVE, ids);
+    return undefined;
   }, [ids]);
+
+  useEffect(() => {
+    if (!apiActiva) return undefined;
+    let activo = true;
+    obtenerFavoritos()
+      .then((datos) => {
+        if (activo) setIds(datos);
+      })
+      .catch(() => {});
+    return () => {
+      activo = false;
+    };
+  }, []);
+
+  const alternar = useCallback(async (id) => {
+    if (apiActiva) {
+      try {
+        setIds(await alternarFavorito(id));
+      } catch {
+        /* sin conexión */
+      }
+    } else {
+      setIds((previos) =>
+        previos.some((guardado) => String(guardado) === String(id))
+          ? previos.filter((guardado) => String(guardado) !== String(id))
+          : [...previos, id],
+      );
+    }
+  }, []);
 
   const valor = useMemo(
     () => ({
       ids,
       total: ids.length,
       esFavorito: (id) => ids.some((guardado) => String(guardado) === String(id)),
-      alternar: (id) => despachar({ type: 'alternar', id }),
-      limpiar: () => despachar({ type: 'limpiar' }),
+      alternar,
+      limpiar: () => setIds([]),
     }),
-    [ids],
+    [ids, alternar],
   );
 
   return <FavoritosContexto.Provider value={valor}>{children}</FavoritosContexto.Provider>;

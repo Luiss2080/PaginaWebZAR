@@ -150,3 +150,64 @@ export async function buscar(termino) {
     )
     .slice(0, 8);
 }
+
+export const apiActiva = API_ACTIVA;
+
+async function pedirJsonMetodo(ruta, metodo, cuerpo) {
+  const respuesta = await fetch(`${BASE}${ruta}`, {
+    method: metodo,
+    headers: { 'Content-Type': 'application/json' },
+    body: cuerpo ? JSON.stringify(cuerpo) : undefined,
+  });
+  const datos = await respuesta.json().catch(() => null);
+  if (!respuesta.ok) {
+    const error = new Error((datos && datos.error) || `Error HTTP ${respuesta.status}`);
+    error.status = respuesta.status;
+    throw error;
+  }
+  return datos;
+}
+
+export function obtenerCarrito() {
+  return pedirJson('/api/carrito');
+}
+
+export function agregarCarrito(datos) {
+  return pedirJsonMetodo('/api/carrito/agregar', 'POST', datos);
+}
+
+export function cambiarCantidadCarrito(id, cantidad) {
+  return pedirJsonMetodo('/api/carrito/cantidad', 'POST', { id, cantidad });
+}
+
+export function quitarCarrito(id) {
+  return pedirJsonMetodo('/api/carrito/quitar', 'POST', { id });
+}
+
+export function vaciarCarrito() {
+  return pedirJsonMetodo('/api/carrito/vaciar', 'POST', {});
+}
+
+export function obtenerFavoritos() {
+  return pedirJson('/api/favoritos');
+}
+
+export function alternarFavorito(productoId) {
+  return pedirJsonMetodo('/api/favoritos/alternar', 'POST', { productoId });
+}
+
+export function obtenerCuenta() {
+  return pedirJson('/api/cuenta');
+}
+
+export function iniciarSesionApi(datos) {
+  return pedirJsonMetodo('/api/cuenta/login', 'POST', datos);
+}
+
+export function registrarApi(datos) {
+  return pedirJsonMetodo('/api/cuenta/registro', 'POST', datos);
+}
+
+export function cerrarSesionApi() {
+  return pedirJsonMetodo('/api/cuenta/logout', 'POST', {});
+}
