@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useCategorias, useProductos } from '../servicios/hooks';
+import { useCategorias, useMarcas, useProductos } from '../servicios/hooks';
 import ProductoCard from '../componentes/ui/ProductoCard';
 import SkeletonGrilla from '../componentes/ui/SkeletonGrilla';
 import EstadoVacio from '../componentes/ui/EstadoVacio';
@@ -15,11 +15,13 @@ const ordenes = [
 export default function Catalogo() {
   const [parametros, setParametros] = useSearchParams();
   const categorias = useCategorias();
+  const marcasApi = useMarcas();
   const { productos: todos } = useProductos({});
 
   const filtros = useMemo(
     () => ({
       categoria: parametros.get('categoria') || '',
+      marcas: (parametros.get('marca') || '').split(',').filter(Boolean),
       tallas: (parametros.get('talla') || '').split(',').filter(Boolean),
       colores: (parametros.get('color') || '').split(',').filter(Boolean),
       precioMin: parametros.get('min') || '',
@@ -30,6 +32,14 @@ export default function Catalogo() {
   );
 
   const { productos, cargando } = useProductos(filtros);
+
+  const marcasDisponibles = useMemo(() => {
+    const conjunto = new Set(marcasApi.map((marca) => marca.slug));
+    todos.forEach((producto) => {
+      if (producto.marca) conjunto.add(producto.marca);
+    });
+    return [...conjunto].sort();
+  }, [marcasApi, todos]);
 
   const tallasDisponibles = useMemo(
     () => [...new Set(todos.flatMap((producto) => producto.tallas))],
@@ -106,6 +116,26 @@ export default function Catalogo() {
                     }`}
                   >
                     {categoria.nombre}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-6">
+            <h2 className="etiqueta text-gris-medio">Marca</h2>
+            <ul className="mt-3 flex flex-col gap-2">
+              {marcasDisponibles.map((marca) => (
+                <li key={marca}>
+                  <button
+                    type="button"
+                    onClick={() => alternarLista('marca', marca)}
+                    aria-pressed={filtros.marcas.includes(marca)}
+                    className={`text-sm capitalize transition-colors hover:text-tinta ${
+                      filtros.marcas.includes(marca) ? 'text-tinta' : 'text-gris-medio'
+                    }`}
+                  >
+                    {marca}
                   </button>
                 </li>
               ))}
