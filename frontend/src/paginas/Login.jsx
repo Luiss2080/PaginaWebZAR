@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCuenta } from '../contextos/contextos';
+import { useSeo } from '../utils/seo';
 
 const emailValido = (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
 
@@ -11,9 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [errores, setErrores] = useState({});
 
-  useEffect(() => {
-    document.title = 'Iniciar sesión — ZARA';
-  }, []);
+  useSeo('Iniciar sesión — ZARA', 'Accede a tu cuenta ZARA para gestionar favoritos y pedidos.');
 
   const enviar = (evento) => {
     evento.preventDefault();

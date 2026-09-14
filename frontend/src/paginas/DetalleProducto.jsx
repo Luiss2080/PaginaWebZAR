@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ClipboardCheck, RotateCcw, Truck } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { useProducto, useProductos } from '../servicios/hooks';
 import { useCarrito } from '../contextos/contextos';
 import { calcularDescuento, formatearPrecio } from '../utils/formato';
+import { useSeo } from '../utils/seo';
 import BotonFavorito from '../componentes/ui/BotonFavorito';
 import Breadcrumbs from '../componentes/ui/Breadcrumbs';
 import ProductoCard from '../componentes/ui/ProductoCard';
@@ -15,9 +16,10 @@ export default function DetalleProducto() {
   const { producto, cargando } = useProducto(id);
   const { productos } = useProductos({});
 
-  useEffect(() => {
-    if (producto) document.title = `${producto.nombre} — ZARA`;
-  }, [producto]);
+  useSeo(
+    producto ? `${producto.nombre} — ZARA` : 'Producto — ZARA',
+    producto ? producto.descripcion : undefined,
+  );
 
   if (cargando) return <CargandoDetalle />;
   if (!producto) return <NoEncontrado />;

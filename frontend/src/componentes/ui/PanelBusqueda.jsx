@@ -87,6 +87,7 @@ export default function PanelBusqueda() {
                         <img
                           src={producto.imagenes[0]}
                           alt={producto.nombre}
+                          loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>

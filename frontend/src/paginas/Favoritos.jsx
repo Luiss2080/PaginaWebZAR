@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFavoritos } from '../contextos/contextos';
 import { useProductos } from '../servicios/hooks';
@@ -6,14 +5,13 @@ import ProductoCard from '../componentes/ui/ProductoCard';
 import SkeletonGrilla from '../componentes/ui/SkeletonGrilla';
 import EstadoVacio from '../componentes/ui/EstadoVacio';
 import Breadcrumbs from '../componentes/ui/Breadcrumbs';
+import { useSeo } from '../utils/seo';
 
 export default function Favoritos() {
   const { ids } = useFavoritos();
   const { productos, cargando } = useProductos({});
 
-  useEffect(() => {
-    document.title = 'Favoritos — ZARA';
-  }, []);
+  useSeo('Favoritos — ZARA', 'Tu lista de deseos: las prendas que has guardado.');
 
   const favoritos = productos.filter((producto) =>
     ids.some((id) => String(id) === String(producto.id)),

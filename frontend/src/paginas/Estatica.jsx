@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Breadcrumbs from '../componentes/ui/Breadcrumbs';
 import NoEncontrado from './NoEncontrado';
+import { useSeo } from '../utils/seo';
 
 const contenidos = {
   envios: {
@@ -59,9 +59,10 @@ export default function Estatica() {
   const { slug } = useParams();
   const contenido = contenidos[slug];
 
-  useEffect(() => {
-    if (contenido) document.title = `${contenido.titulo} — ZARA`;
-  }, [contenido]);
+  useSeo(
+    contenido ? `${contenido.titulo} — ZARA` : undefined,
+    contenido?.parrafos?.[0],
+  );
 
   if (!contenido) return <NoEncontrado />;
 

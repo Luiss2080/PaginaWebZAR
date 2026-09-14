@@ -1,6 +1,7 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useCategorias, useMarcas, useProductos } from '../servicios/hooks';
+import { useSeo } from '../utils/seo';
 import ProductoCard from '../componentes/ui/ProductoCard';
 import SkeletonGrilla from '../componentes/ui/SkeletonGrilla';
 import EstadoVacio from '../componentes/ui/EstadoVacio';
@@ -54,10 +55,11 @@ export default function Catalogo() {
     return [...mapa.entries()].map(([nombre, hex]) => ({ nombre, hex }));
   }, [todos]);
 
-  useEffect(() => {
-    const nombre = categorias.find((cat) => cat.slug === filtros.categoria)?.nombre;
-    document.title = nombre ? `${nombre} — ZARA` : 'Catálogo — ZARA';
-  }, [categorias, filtros.categoria]);
+  const nombreCategoria = categorias.find((cat) => cat.slug === filtros.categoria)?.nombre;
+  useSeo(
+    nombreCategoria ? `${nombreCategoria} — ZARA` : 'Catálogo — ZARA',
+    'Explora el catálogo con filtros por categoría, marca, talla, color y precio.',
+  );
 
   const actualizar = (clave, valor) => {
     const siguientes = new URLSearchParams(parametros);

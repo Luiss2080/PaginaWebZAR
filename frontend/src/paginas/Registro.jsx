@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCuenta } from '../contextos/contextos';
+import { useSeo } from '../utils/seo';
 
 const emailValido = (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
 
@@ -13,9 +14,7 @@ export default function Registro() {
   const [confirmar, setConfirmar] = useState('');
   const [errores, setErrores] = useState({});
 
-  useEffect(() => {
-    document.title = 'Crear cuenta — ZARA';
-  }, []);
+  useSeo('Crear cuenta — ZARA', 'Regístrate en ZARA para guardar favoritos y agilizar tus compras.');
 
   const enviar = (evento) => {
     evento.preventDefault();
