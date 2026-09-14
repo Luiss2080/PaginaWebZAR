@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
 import { useCategorias } from '../../servicios/hooks';
+import { useCierreExterior } from '../../servicios/accesibilidad';
 import { useBusqueda, useCarrito, useCuenta, useFavoritos } from '../../contextos/contextos';
 
 export default function Header() {
@@ -13,6 +14,7 @@ export default function Header() {
 
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [cuentaAbierta, setCuentaAbierta] = useState(false);
+  const cuentaRef = useCierreExterior(cuentaAbierta, () => setCuentaAbierta(false));
 
   const cerrarTodo = () => {
     setMenuAbierto(false);
@@ -74,7 +76,7 @@ export default function Header() {
             {totalFavoritos > 0 && <Contador valor={totalFavoritos} />}
           </Link>
 
-          <div className="relative hidden sm:block">
+          <div ref={cuentaRef} className="relative hidden sm:block">
             <button
               type="button"
               aria-label="Cuenta"
@@ -187,7 +189,10 @@ export default function Header() {
 
 function Contador({ valor }) {
   return (
-    <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-tinta px-1 text-[10px] font-medium text-blanco">
+    <span
+      aria-live="polite"
+      className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-tinta px-1 text-[10px] font-medium text-blanco"
+    >
       {valor}
     </span>
   );

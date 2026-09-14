@@ -1,27 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { useBusqueda } from '../../contextos/contextos';
+import { useOverlayAccesible } from '../../servicios/accesibilidad';
 import { buscar } from '../../servicios/api';
 import { formatearPrecio } from '../../utils/formato';
 
 export default function PanelBusqueda() {
   const { abierta, termino, cerrar, cambiarTermino } = useBusqueda();
   const [resultados, setResultados] = useState([]);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (!abierta) return undefined;
-    const enfocar = setTimeout(() => inputRef.current?.focus(), 50);
-    const alPulsar = (evento) => {
-      if (evento.key === 'Escape') cerrar();
-    };
-    window.addEventListener('keydown', alPulsar);
-    return () => {
-      clearTimeout(enfocar);
-      window.removeEventListener('keydown', alPulsar);
-    };
-  }, [abierta, cerrar]);
+  const contenedorRef = useOverlayAccesible(abierta, cerrar);
 
   useEffect(() => {
     let activo = true;
@@ -44,11 +32,14 @@ export default function PanelBusqueda() {
         className="absolute inset-0 h-full w-full cursor-default bg-tinta/40"
       />
 
-      <div className="absolute inset-x-0 top-0 max-h-[85vh] overflow-y-auto bg-blanco">
+      <div
+        ref={contenedorRef}
+        tabIndex={-1}
+        className="absolute inset-x-0 top-0 max-h-[85vh] overflow-y-auto bg-blanco outline-none"
+      >
         <div className="contenedor py-8">
           <div className="flex items-center justify-between gap-6">
             <input
-              ref={inputRef}
               type="search"
               value={termino}
               onChange={(evento) => cambiarTermino(evento.target.value)}
