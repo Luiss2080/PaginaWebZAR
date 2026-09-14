@@ -32,7 +32,7 @@ El repo contiene una app PHP MVC legada con un catálogo de moda en MySQL (`mult
 
 ### Catálogo
 - RF-7: CUANDO el usuario visita `/catalogo`, EL SISTEMA lista los productos en una grilla con imagen, nombre, precio y precio anterior cuando exista.
-- RF-8: CUANDO el usuario aplica filtros por categoría, talla, color o rango de precio, EL SISTEMA filtra el listado y refleja los filtros en la URL.
+- RF-8: CUANDO el usuario aplica filtros por categoría, marca, talla, color o rango de precio, EL SISTEMA filtra el listado y refleja los filtros en la URL.
 - RF-9: CUANDO el usuario cambia el orden entre novedad, precio ascendente y precio descendente, EL SISTEMA reordena el listado.
 - RF-10: SI la combinación de filtros no devuelve resultados, ENTONCES EL SISTEMA muestra un estado vacío con una acción para limpiar los filtros.
 - RF-11: MIENTRAS los productos se están cargando, EL SISTEMA muestra marcadores de carga (skeleton) en la grilla.

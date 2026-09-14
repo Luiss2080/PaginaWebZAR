@@ -102,7 +102,7 @@ function ContenidoDetalle({ producto }) {
       </div>
 
       <div className="flex flex-col">
-        <p className="etiqueta text-gris-medio">{producto.marca}</p>
+        <p className="etiqueta capitalize text-gris-medio">{producto.marca}</p>
         <h1 className="mt-2 font-titulo text-3xl sm:text-4xl">{producto.nombre}</h1>
 
         <div className="mt-4 flex items-baseline gap-3">

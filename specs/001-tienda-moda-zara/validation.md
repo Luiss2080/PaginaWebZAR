@@ -12,7 +12,7 @@ Métodos: **Navegador** (Playwright, local seed), **API** (modo `VITE_API_BASE` 
 | RF-5 | Pie con columnas, newsletter y legal | Navegador | Cumple |
 | RF-6 | Home con hero, categorías y destacados | Navegador | Cumple |
 | RF-7 | Catálogo lista productos con precio y tachado | Navegador | Cumple |
-| RF-8 | `?categoria=mujer` filtra y refleja en URL | Navegador | Cumple |
+| RF-8 | `?categoria=mujer` filtra y refleja en URL; `?marca=adidas` → 2 productos | Navegador | Cumple |
 | RF-9 | Selector de orden (novedad/precio) | Código | Cumple |
 | RF-10 | Estado vacío con "Limpiar filtros" | Código | Cumple |
 | RF-11 | Skeleton mientras carga | Código | Cumple |
