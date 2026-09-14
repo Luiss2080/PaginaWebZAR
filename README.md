@@ -19,6 +19,27 @@
 
 ---
 
+## 🛍️ **Frontend SPA (React) — Tienda de moda**
+
+La interfaz activa es una SPA en **React 19 + Vite + Tailwind CSS v4 + react-router-dom v7 + framer-motion** ubicada en `frontend/`, con estética editorial tipo Zara (blanco, tipografía serif/sans, fotografía grande).
+
+```bash
+cd frontend
+npm install
+npm run dev      # http://localhost:5173
+```
+
+Consume el catálogo por una capa única (`frontend/src/servicios/api.js`) con dos modos:
+
+- **Respaldo local** (por defecto): no requiere backend.
+- **API JSON de este backend PHP:** copia `frontend/.env.example` a `frontend/.env` y arranca `php -S localhost:8080 index.php` en la raíz. La SPA consume `/api/productos`, `/api/categorias`, `/api/marcas` y `/api/buscar` mediante el proxy de Vite.
+
+> Nota: la base de datos real `multishop_db` usa columnas distintas a `database/schema.sql` (`is_active`, `is_featured`, `sale_price`, `image`; no existen `brands` ni `product_images`). `app/controllers/ApiControlador.php` consulta el esquema real y completa tallas/colores por defecto.
+
+Especificación SDD en `docs/constitution.md` y `specs/001-tienda-moda-zara/`.
+
+---
+
 ## 🌟 **Características Principales**
 
 <table>
