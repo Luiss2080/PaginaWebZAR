@@ -3,6 +3,7 @@ import {
   productos as productosLocales,
 } from '../datos/catalogo';
 
+const API_ACTIVA = import.meta.env.VITE_API_BASE !== undefined;
 const BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
 
 let respaldoActivo = false;
@@ -86,7 +87,7 @@ export function filtrarProductos(lista, filtros = {}) {
 }
 
 async function cargarProductos() {
-  if (BASE) {
+  if (API_ACTIVA) {
     try {
       const datos = await pedirJson('/api/productos');
       respaldoActivo = false;
@@ -109,7 +110,7 @@ export async function obtenerProducto(id) {
 }
 
 export async function obtenerCategorias() {
-  if (BASE) {
+  if (API_ACTIVA) {
     try {
       return await pedirJson('/api/categorias');
     } catch {
@@ -120,7 +121,7 @@ export async function obtenerCategorias() {
 }
 
 export async function obtenerMarcas() {
-  if (BASE) {
+  if (API_ACTIVA) {
     try {
       return await pedirJson('/api/marcas');
     } catch {
