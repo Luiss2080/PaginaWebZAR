@@ -1,0 +1,91 @@
+- generic [ref=f6e3]:
+  - generic [ref=f6e5]:
+    - generic [ref=f6e6]: Envíos gratis a partir de 30 €
+    - generic [ref=f6e7]: Devoluciones gratuitas en 30 días
+  - banner [ref=f6e8]:
+    - generic [ref=f6e9]:
+      - link "ZARA" [ref=f6e10] [cursor=pointer]:
+        - /url: /
+      - navigation "Categorías" [ref=f6e11]:
+        - link "Nuevos" [ref=f6e12] [cursor=pointer]:
+          - /url: /catalogo
+        - link "Mujer" [ref=f6e13] [cursor=pointer]:
+          - /url: /catalogo?categoria=mujer
+        - link "Hombre" [ref=f6e14] [cursor=pointer]:
+          - /url: /catalogo?categoria=hombre
+        - link "Niños" [ref=f6e15] [cursor=pointer]:
+          - /url: /catalogo?categoria=ninos
+        - link "Accesorios" [ref=f6e16] [cursor=pointer]:
+          - /url: /catalogo?categoria=accesorios
+      - generic [ref=f6e17]:
+        - button "Buscar" [ref=f6e18]
+        - link "Favoritos (1)" [ref=f6e22] [cursor=pointer]:
+          - /url: /favoritos
+          - generic [ref=f6e25]: "1"
+        - button "Cuenta" [ref=f6e27]
+        - button "Carrito (1)" [ref=f6e31]:
+          - generic [ref=f6e35]: "1"
+  - main [ref=f6e36]:
+    - generic [ref=f6e38]:
+      - heading "Página no encontrada" [level=2] [ref=f6e39]
+      - paragraph [ref=f6e40]: La página que buscas no existe o ha cambiado de dirección.
+      - link "Volver al inicio" [ref=f6e42] [cursor=pointer]:
+        - /url: /
+  - contentinfo [ref=f6e43]:
+    - generic [ref=f6e44]:
+      - generic [ref=f6e45]:
+        - link "ZARA" [ref=f6e46] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f6e47]: Colecciones de temporada para mujer, hombre y niños. Diseño atemporal, materiales duraderos y envíos a todo el país.
+        - generic [ref=f6e48]:
+          - text: Recibe las novedades
+          - generic [ref=f6e49]:
+            - textbox "Recibe las novedades" [ref=f6e50]:
+              - /placeholder: tu@correo.com
+            - button "Suscribirme" [ref=f6e51]
+      - generic [ref=f6e52]:
+        - generic [ref=f6e53]:
+          - heading "Comprar" [level=2] [ref=f6e54]
+          - list [ref=f6e55]:
+            - listitem [ref=f6e56]:
+              - link "Novedades" [ref=f6e57] [cursor=pointer]:
+                - /url: /catalogo
+            - listitem [ref=f6e58]:
+              - link "Mujer" [ref=f6e59] [cursor=pointer]:
+                - /url: /catalogo?categoria=mujer
+            - listitem [ref=f6e60]:
+              - link "Hombre" [ref=f6e61] [cursor=pointer]:
+                - /url: /catalogo?categoria=hombre
+            - listitem [ref=f6e62]:
+              - link "Niños" [ref=f6e63] [cursor=pointer]:
+                - /url: /catalogo?categoria=ninos
+            - listitem [ref=f6e64]:
+              - link "Accesorios" [ref=f6e65] [cursor=pointer]:
+                - /url: /catalogo?categoria=accesorios
+        - generic [ref=f6e66]:
+          - heading "Ayuda" [level=2] [ref=f6e67]
+          - list [ref=f6e68]:
+            - listitem [ref=f6e69]:
+              - link "Envíos" [ref=f6e70] [cursor=pointer]:
+                - /url: /pagina/envios
+            - listitem [ref=f6e71]:
+              - link "Devoluciones" [ref=f6e72] [cursor=pointer]:
+                - /url: /pagina/devoluciones
+            - listitem [ref=f6e73]:
+              - link "Guía de tallas" [ref=f6e74] [cursor=pointer]:
+                - /url: /pagina/tallas
+            - listitem [ref=f6e75]:
+              - link "Contacto" [ref=f6e76] [cursor=pointer]:
+                - /url: /pagina/contacto
+        - generic [ref=f6e77]:
+          - heading "Legal" [level=2] [ref=f6e78]
+          - list [ref=f6e79]:
+            - listitem [ref=f6e80]:
+              - link "Términos" [ref=f6e81] [cursor=pointer]:
+                - /url: /pagina/terminos
+            - listitem [ref=f6e82]:
+              - link "Privacidad" [ref=f6e83] [cursor=pointer]:
+                - /url: /pagina/privacidad
+    - generic [ref=f6e85]:
+      - paragraph [ref=f6e86]: © 2026 ZARA. Todos los derechos reservados.
+      - paragraph [ref=f6e87]: Demo sin pasarela de pago real.
