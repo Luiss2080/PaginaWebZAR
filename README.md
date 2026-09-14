@@ -34,9 +34,18 @@ Consume el catálogo por una capa única (`frontend/src/servicios/api.js`) con d
 - **Respaldo local** (por defecto): no requiere backend.
 - **API JSON de este backend PHP:** copia `frontend/.env.example` a `frontend/.env` y arranca `php -S localhost:8080 index.php` en la raíz. La SPA consume `/api/productos`, `/api/categorias`, `/api/marcas` y `/api/buscar` mediante el proxy de Vite.
 
-> Nota: la base de datos real `multishop_db` usa columnas distintas a `database/schema.sql` (`is_active`, `is_featured`, `sale_price`, `image`; no existen `brands` ni `product_images`). `app/controllers/ApiControlador.php` consulta el esquema real y completa tallas/colores por defecto.
+> Nota: la base de datos real `multishop_db` usa columnas distintas a `database/schema.sql` (`is_active`, `is_featured`, `sale_price`, `image`; no existen `brands` ni `product_images`). `app/controllers/ApiControlador.php` consulta el esquema real.
 
-Especificación SDD en `docs/constitution.md` y `specs/001-tienda-moda-zara/`.
+### Datos 100% dinámicos con MySQL
+La migración `scripts/migracion_catalogo.php` (idempotente) crea y siembra `brands`, `product_images`, `product_variants` y las columnas necesarias de `cart_items`/`wishlist_items`, además de un usuario demo.
+
+```bash
+php scripts/migracion_catalogo.php   # migración 002
+```
+
+Con la API activa, la SPA guarda el **carrito** (`cart_items`), los **favoritos** (`wishlist_items`) y la **sesión** (`users` con `password_hash`) en la BD; sin backend, sigue funcionando con el respaldo local. Usuario demo: `demo@zara.test` / `demo1234`.
+
+Especificación SDD en `docs/constitution.md`, `specs/001-tienda-moda-zara/` y `specs/002-datos-dinamicos-bd/`.
 
 ---
 

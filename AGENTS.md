@@ -12,6 +12,7 @@ El repositorio también contiene una aplicación heredada en **PHP 8 MVC puro** 
 - Lint: `npm run lint` (en `frontend/`, oxlint)
 - Backend PHP: `php -S localhost:8080 index.php` (en la raíz; sirve la API `/api/...` y la app legada)
 - API desde la SPA: copiar `frontend/.env.example` a `frontend/.env` (activa el proxy `/api` → `:8080`)
+- Base de datos: `php scripts/migracion_catalogo.php` (migración idempotente: marcas, variantes, imágenes y usuario demo `demo@zara.test` / `demo1234`)
 
 ## Estilo y convenciones
 - Idioma del código, carpetas, comentarios y mensajes de UI: **español** (`componentes`, `paginas`, `secciones`, `servicios`, `contextos`, `datos`).
